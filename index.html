@@ -4,21 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flo Kayser - Portfolio</title>
+    <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <style>
-      body {
-        background: red;
-      }
-    </style>
-
-
-
-
-
-
-
-
+    <!-- ========== NAV ========== -->
+    <nav class="nav">
+      <div class="toggle-navbar"><ion-icon name="add-outline"></ion-icon></div>
+      <li style="--i: 0">
+        <a href="#" data-title="Mail"><ion-icon name="mail-outline"></ion-icon></a>
+      </li>
+      <li style="--i: 1">
+        <a href="#" data-title="Projects"><ion-icon name="albums-outline"></ion-icon></a>
+      </li>
+      <li style="--i: 2">
+        <a href="#" data-title="Experience"><ion-icon name="folder-open-outline"></ion-icon></a>
+      </li>
+      <li style="--i: 3">
+        <a href="#" data-title="Home"><ion-icon name="home-outline"></ion-icon></a>
+      </li>
+    </nav>
 
     <script
       type="module"
@@ -28,5 +32,6 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
+    <script src="main.js"></script>
   </body>
 </html>

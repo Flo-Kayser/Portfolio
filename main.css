@@ -1,6 +1,14 @@
 /* main.css */
 
+/* Variables */
+@import url('./utils/variables.css');
+
 /* Fonts */
-@import url('.utils/fonts.css');
+@import url('./utils/fonts.css');
 
+/* Basic global settings */
+@import url('./utils/globals.css');
 
+/*  Components */
+
+@import url('./components/navbar.css');

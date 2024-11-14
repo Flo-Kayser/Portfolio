@@ -1,0 +1,93 @@
+/*  navbar.css */
+
+.nav {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    transform: translate(30%, 30%);
+    width: 12.5rem;
+    height: 12.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+}
+
+.nav li {
+    position: absolute;
+    left: 0;
+    list-style: none;
+    transform-origin: 100px;
+    transition: .5s;
+    transition-delay: calc(.1s*var(--i));
+    transform: rotate(0deg) translateX(80px);
+}
+
+.nav.active li {
+    transform: rotate(calc(120deg/4*var(--i)));
+
+}
+
+.nav li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    background: #fff;
+    color: #333;
+    border-radius: 50%;
+    transform: rotate(calc(120deg/ -4*var(--i)));
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+    transition: .5s;
+}
+
+.nav li a:hover {
+    color: #fff;
+    background: #333;
+    transform: rotate(calc(120deg/ -4*var(--i))) scale(1.2);
+}
+
+
+
+.nav li a::after {
+    content: attr(data-title);
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translate(-80%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+
+}
+
+.nav li a:hover::after {
+    opacity: 1;
+}
+
+.nav>.toggle-navbar {
+
+    display: flex;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+    font-size: 2rem;
+    transition: transform 1.25s;
+    z-index: 1000;
+}
+
+
+
+.nav.active>.toggle-navbar {
+    transform: rotate(220deg);
+}
