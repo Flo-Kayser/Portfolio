@@ -5,24 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flo Kayser - Portfolio</title>
     <link rel="stylesheet" href="main.css" />
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script>
+      emailjs.init("mMO3ECnvSBqtJeYH6"); // Verwende hier deinen öffentlichen API-Schlüssel
+    </script>
   </head>
   <body>
     <!-- ========== NAV ========== -->
     <nav class="nav">
       <div class="toggle-navbar"><ion-icon name="add-outline"></ion-icon></div>
       <li style="--i: 0">
-        <a href="#" data-title="Mail"><ion-icon name="mail-outline"></ion-icon></a>
+        <a href="#contact" data-title="Mail"
+          ><ion-icon name="mail-outline"></ion-icon
+        ></a>
       </li>
       <li style="--i: 1">
-        <a href="#" data-title="Projects"><ion-icon name="albums-outline"></ion-icon></a>
+        <a href="#" data-title="Projects"
+          ><ion-icon name="albums-outline"></ion-icon
+        ></a>
       </li>
       <li style="--i: 2">
-        <a href="#" data-title="Experience"><ion-icon name="folder-open-outline"></ion-icon></a>
+        <a href="#" data-title="Experience"
+          ><ion-icon name="folder-open-outline"></ion-icon
+        ></a>
       </li>
       <li style="--i: 3">
-        <a href="#" data-title="Home"><ion-icon name="home-outline"></ion-icon></a>
+        <a href="#" data-title="Home"
+          ><ion-icon name="home-outline"></ion-icon
+        ></a>
       </li>
     </nav>
+    <section class="gallery-section"></section>
+
+    <!--  ========== Projects ========== -->
+    <section class="project-section">
+      <legend class="section-title">Projects</legend>
+      <div class="project-container">
+        <div class="project-box"></div>
+        <div class="project-box"></div>
+        <div class="project-box"></div>
+      </div>
+    </section>
+    <!-- ========== Contact ========== -->
+    <section class="contact section" id="contact">
+      <fieldset class="contact-container">
+        <legend class="section-title">CONTACT ME</legend>
+        <form
+          action=""
+          class="contact-form"
+          id="contact-form"
+          autocomplete="off"
+        >
+          <div class="contact-group">
+            <div class="input-container">
+              <input
+                type="text"
+                name="user_name"
+                id="user-name"
+                required
+                class="contact-input"
+                placeholder=""
+              />
+              <label class="labelline" for="user-name">Enter your name</label>
+            </div>
+            <div class="input-container">
+              <input
+                type="email"
+                name="user_email"
+                id="user-email"
+                required
+                class="contact-email"
+                placeholder=""
+              />
+              <label class="labelline" for="user-email">Enter your Email</label>
+            </div>
+          </div>
+          <div class="input-container">
+            <textarea
+              name="user_message"
+              class="contact-input contact-area"
+              id="user-message"
+              placeholder=""
+            ></textarea>
+            <label class="labelline" for="user-message"
+              >Enter your message</label
+            >
+          </div>
+          <div class="contact-send-group">
+            <p class="contact-message" id="contact-message"></p>
+            <button type="submit" class="contact-button">Send Message</button>
+          </div>
+        </form>
+      </fieldset>
+    </section>
 
     <script
       type="module"

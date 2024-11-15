@@ -10,5 +10,6 @@
 @import url('./utils/globals.css');
 
 /*  Components */
-
+@import url('./components/contact.css');
 @import url('./components/navbar.css');
+@import url('./components/projects.css');

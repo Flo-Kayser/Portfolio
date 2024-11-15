@@ -44,7 +44,7 @@
 
 .nav li a:hover {
     color: #fff;
-    background: #333;
+    background: var(--hover-accent-color);
     transform: rotate(calc(120deg/ -4*var(--i))) scale(1.2);
 }
 
@@ -73,7 +73,7 @@
     position: absolute;
     width: 60px;
     height: 60px;
-    background: #fff;
+    background: var(--default-color);
     z-index: 10;
     justify-content: center;
     align-items: center;

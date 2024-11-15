@@ -5,4 +5,10 @@
     --body-bg-color: #1e1e1e;
     --body-color: #f4f4f4;
 
+
+    --default-color: #f4f4f4;
+    --valid-color: #9bdc28;
+    --invalid-color: #cc0000;
+
+    --hover-accent-color: #333;
 }
