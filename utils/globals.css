@@ -27,6 +27,7 @@ section{
     justify-self: center;
     width: 90%;
     margin-bottom: 2rem;
+    opacity: 0;
 }
 
 fieldset{
@@ -43,3 +44,8 @@ legend{
     pointer-events: none;
 }
 
+
+.wartungspause{
+    justify-self: center;
+    
+}
