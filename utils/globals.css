@@ -13,6 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     scroll-behavior: smooth;
+    opacity: 0;
 }
 
 *,
