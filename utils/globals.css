@@ -4,15 +4,18 @@ html,
 body {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
     font-family: "Montserrat Alternates", sans-serif;
     font-weight: 400;
     font-style: normal;
     background: var(--body-bg-color);
     color: var(--body-color);
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     scroll-behavior: smooth;
+    overflow-x: hidden;
     
 }
 
@@ -24,11 +27,9 @@ body {
 
 
 section{
-    min-height: 35rem;
-    justify-self: center;
-    width: 90%;
-    margin-bottom: 2rem;
-    opacity: 0;
+    height: auto;
+    /* justify-self: center; */
+    width: 80%;
 }
 
 fieldset{
@@ -36,17 +37,24 @@ fieldset{
     padding: 2rem;
     
 }
-legend{
+legend,h1{
     padding: .5rem;
     text-align: center;
     font-size: 3rem;
 }
 .section-title{
     pointer-events: none;
+    margin-bottom: .5rem;
 }
 
 
 .wartungspause{
     justify-self: center;
     
+}
+
+@media screen and (max-width:600px){
+    section{
+        width: 90%;
+    }
 }

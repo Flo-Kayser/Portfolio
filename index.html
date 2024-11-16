@@ -1,120 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flo Kayser - Portfolio</title>
-    <link rel="stylesheet" href="main.css" />
+<html lang="de">
 
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-    ></script>
-    <script>
-      emailjs.init("mMO3ECnvSBqtJeYH6"); // Verwende hier deinen öffentlichen API-Schlüssel
-    </script>
-  </head>
-  <body>
-    <!-- ========== NAV ========== -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flo Kayser - Portfolio</title>
+  <link rel="stylesheet" href="main.css" />
 
-    <p class="wartungspause">Akutell befindet sich die Website in einer Wartungspause:</p>
-    <p class="wartungspause">14.11. - 16.11.</p>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init("mMO3ECnvSBqtJeYH6"); 
+  </script>
+</head>
 
-    <nav class="nav">
-      <div class="toggle-navbar"><ion-icon name="add-outline"></ion-icon></div>
-      <li style="--i: 0">
-        <a href="#contact" data-title="Mail"
-          ><ion-icon name="mail-outline"></ion-icon
-        ></a>
-      </li>
-      <li style="--i: 1">
-        <a href="#" data-title="Projects"
-          ><ion-icon name="albums-outline"></ion-icon
-        ></a>
-      </li>
-      <li style="--i: 2">
-        <a href="#" data-title="Experience"
-          ><ion-icon name="folder-open-outline"></ion-icon
-        ></a>
-      </li>
-      <li style="--i: 3">
-        <a href="#" data-title="Home"
-          ><ion-icon name="home-outline"></ion-icon
-        ></a>
-      </li>
-    </nav>
-    <section class="gallery-section"></section>
+<body>
 
-    <!--  ========== Projects ========== -->
-    <section class="project-section">
-      <legend class="section-title">Projects</legend>
-      <div class="project-container">
-        <div class="project-box"></div>
-        <div class="project-box"></div>
-        <div class="project-box"></div>
+  <!--  ========== Home ========== -->
+  <section id="home">
+    <div class="home">
+      <div class="home-text">
+        <h4 class="home-introduction">Welcome to Flo Kayser's portfolio! This site is constantly evolving and being
+          refined. Stay tuned for further updates and new content. Enjoy exploring!</h4>
+        <div class="typewriter">
+
+          <h3>I'm <span class="auto-type"></span></h3>
+        </div>
       </div>
-    </section>
-    <!-- ========== Contact ========== -->
-    <section class="contact section" id="contact">
-      <fieldset class="contact-container">
-        <legend class="section-title">CONTACT ME</legend>
-        <form
-          action=""
-          class="contact-form"
-          id="contact-form"
-          autocomplete="off"
-        >
-          <div class="contact-group">
-            <div class="input-container">
-              <input
-                type="text"
-                name="user_name"
-                id="user-name"
-                required
-                class="contact-input"
-                placeholder=""
-              />
-              <label class="labelline" for="user-name">Enter your name</label>
-            </div>
-            <div class="input-container">
-              <input
-                type="email"
-                name="user_email"
-                id="user-email"
-                required
-                class="contact-email"
-                placeholder=""
-              />
-              <label class="labelline" for="user-email">Enter your Email</label>
-            </div>
+
+      <div id="self-portrait"></div>
+    </div>
+  </section>
+  <!--  ========== Projects ========== -->
+  <section class="project-section" id="projects">
+    <h1 class="section-title">----- current Projects -----</h1>
+    <div class="project-container">
+      <div class="project-box" style="--bg-image: url('../img/projects/jsCube.jpg')">
+        <div class="project-box-content">
+          <div class="project-img bg-project"></div>
+          <p class="project-box-description">This project is more of a hodgepodge of little gadgets and effects!</p>
+          <button class="project-visit-button">visit</button>
+        </div>
+      </div>
+      <div class="project-box" style="--bg-image: url('../img/projects/img_Charts.jpg')">
+        <div class="project-box-content">
+          <div class="project-img bg-project"></div>
+          <p class="project-box-description">The small project grew out of a few surveys that needed individual, unique
+            charts!</p>
+          <button class="project-visit-button">visit</button>
+        </div>
+      </div>
+      <div class="project-box" style="--bg-image: url('../img/projects/img_Wheater.jpg')">
+        <div class="project-box-content">
+          <div class="project-img bg-project"></div>
+          <p class="project-box-description">This project includes a weather app that displays and analyzes precise,
+            real-time data on weather conditions.</p>
+          <button class="project-visit-button">visit</button>
+        </div>
+      </div>
+      <div class="project-box" style="--bg-image: url('../img/projects/img_Quiz.jpg')">
+        <div class="project-box-content">
+          <div class="project-img bg-project"></div>
+          <p class="project-box-description">This project includes a weather app that displays and analyzes precise,
+            real-time data on weather conditions.</p>
+          <button class="project-visit-disabled-button" disabled>Coming soon!</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!--  ========== Gallery ========== -->
+  <section id="gallery">
+    <h1 class="section-title">----- Gallery -----</h1>
+    <div class="gallery">
+      <div class="gallery-slide">
+        <div class="gallery-item" style="background-image: url('../img/gallery/img_F1Car.jpg');">
+          <div class="gallery-content">
+            <div class="gallery-img-name">Flo Kayser</div>
+            <div class="gallery-img-subtext">Adaptation of an F1 car</div>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url('../img/gallery/img_blenderLogo.jpg');">
+          <div class="gallery-content">
+            <div class="gallery-img-name">Flo Kayser</div>
+            <div class="gallery-img-subtext">A gallery showcasing 3D projects created with Blender.</div>
+          </div>
+        </div>
+        <div class="gallery-item" style="background: black;">
+          <video class="gallery-video" autoplay loop muted>
+            <source src="../img/gallery/vid_windmill.mp4" type="video/mp4">
+            Dein Browser unterstützt dieses Videoformat nicht.
+          </video>
+        </div>
+        <div class="gallery-item" style="background: black;">
+          <video class="gallery-video" autoplay loop muted>
+            <source src="../img/gallery/vid_impossibleCube.mp4" type="video/mp4">
+            Dein Browser unterstützt dieses Videoformat nicht.
+          </video>
+        </div>
+        <div class="gallery-item" style="background-image: url(https://i.ibb.co/NSwVv8D/img3.jpg);">
+          <div class="gallery-content">
+            <div class="gallery-img-name"></div>
+            <div class="gallery-img-subtext"></div>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url(https://i.ibb.co/Bq4Q0M8/img4.jpg);">
+          <div class="gallery-content">
+            <div class="gallery-img-name"></div>
+            <div class="gallery-img-subtext"></div>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url(https://i.ibb.co/jTQfmTq/img5.jpg);">
+          <div class="gallery-content">
+            <div class="gallery-img-name"></div>
+            <div class="gallery-img-subtext"></div>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url(https://i.ibb.co/RNkk6L0/img6.jpg);">
+          <div class="gallery-content">
+            <div class="gallery-img-name"></div>
+            <div class="gallery-img-subtext"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-slider-buttons">
+        <button class="prev"><ion-icon name="arrow-back-outline"></ion-icon></button>
+        <button class="next"><ion-icon name="arrow-forward-outline"></ion-icon></button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== Contact ========== -->
+  <section class="contact-section" id="contact">
+    <fieldset class="contact-container">
+      <legend class="section-title">CONTACT ME</legend>
+      <form action="" class="contact-form" id="contact-form" autocomplete="off">
+        <div class="contact-group">
+          <div class="input-container">
+            <input type="text" name="user_name" id="user-name" required class="contact-input" placeholder="" />
+            <label class="labelline" for="user-name">Enter your name</label>
           </div>
           <div class="input-container">
-            <textarea
-              name="user_message"
-              class="contact-input contact-area"
-              id="user-message"
-              placeholder=""
-            ></textarea>
-            <label class="labelline" for="user-message"
-              >Enter your message</label
-            >
+            <input type="email" name="user_email" id="user-email" required class="contact-email" placeholder="" />
+            <label class="labelline" for="user-email">Enter your Email</label>
           </div>
-          <div class="contact-send-group">
-            <p class="contact-message" id="contact-message"></p>
-            <button type="submit" class="contact-button">Send Message</button>
-          </div>
-        </form>
-      </fieldset>
-    </section>
+        </div>
+        <div class="input-container">
+          <textarea name="user_message" class="contact-input contact-area" id="user-message" placeholder=""></textarea>
+          <label class="labelline" for="user-message">Enter your message</label>
+        </div>
+        <div class="contact-send-group">
+          <p class="contact-message" id="contact-message"></p>
+          <button type="submit" class="contact-button">Send Message</button>
+        </div>
+      </form>
+    </fieldset>
+  </section>
+  <!-- ========== NAV ========== -->
+  <nav class="nav">
+    <div class="toggle-navbar"><ion-icon name="add-outline"></ion-icon></div>
+    <li style="--i: 0">
+      <a href="#contact" data-title="Mail"><ion-icon name="mail-outline"></ion-icon></a>
+    </li>
+    <li style="--i: 1">
+      <a href="#gallery" data-title="Gallery"><ion-icon name="images-outline"></ion-icon></a>
+    </li>
+    <li style="--i: 2">
+      <a href="#projects" data-title="Projects"><ion-icon name="albums-outline"></ion-icon></a>
+    </li>
+    <li style="--i: 3">
+      <a href="#home" data-title="Home"><ion-icon name="home-outline"></ion-icon></a>
+    </li>
+  </nav>
+  <!-- ========== footer ========== -->
+   <footer><p>&copy; 2024 All rights reserved by Flo Kayser</p></footer>
 
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
-    <script src="main.js"></script>
-  </body>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+  <script src="main.js"></script>
+</body>
+
 </html>

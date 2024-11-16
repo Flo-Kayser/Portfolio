@@ -53,6 +53,9 @@
 .nav li a::after {
     content: attr(data-title);
     position: absolute;
+    background: var(--hover-accent-color);
+    padding: .2rem;
+    border-radius: .5rem;
     top: 0%;
     left: 0%;
     transform: translate(-80%, -50%);

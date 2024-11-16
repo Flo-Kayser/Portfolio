@@ -1,0 +1,89 @@
+.home {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    /* gap: 1rem;  */
+    padding: 1rem;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: flex-start;
+    border: .5rem solid var(--hover-accent-color);
+    border-radius: .9rem;
+    box-shadow: 0 4rem 3rem rgba(0, 0, 0, .5) inset;
+    /* box-shadow: 0 1rem 3rem rgba(0, 0, 0, .5)    ; */
+
+
+}
+
+.home-text {
+    display: flex;
+    flex-direction: column;
+    width: 59%;
+}
+
+.typewriter,
+.home-introduction {
+    width: 100%;
+}
+
+#self-portrait {
+    width: 40%;
+    aspect-ratio: 3/4;
+    background-image: url('../img/self_portraits/me_standing.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 4.5vh;
+
+
+}
+
+h3 {
+    position: relative;
+    color: var(--default-color);
+    font-size: 5vw;
+    margin: 0;
+    text-align: start;
+    white-space: nowrap;
+}
+
+.auto-type {
+    color: var(--valid-color);
+}
+
+.home-introduction {
+    font-size: 2vw;
+    background: var(--hover-accent-color);
+    padding: 3vw;
+    margin-top: 0;
+    border-radius: .5rem;
+}
+
+@media screen and (max-width: 600px) {
+    .home {
+        flex-direction: column;
+    }
+
+    .home-text {
+        flex-direction: column;
+        width: 100%;
+        min-height:50vw ;
+    }
+
+
+    .home-introduction {
+        font-size: 3vw;
+        border-radius: 1rem;
+    }
+
+    h3 {
+        font-size: 10vw;
+        white-space: normal;
+    }
+
+    #self-portrait {
+        width: 100%;
+        margin: 0;
+        background-image: url('../img/self_portraits/me_front.png');
+        background-position: center;
+    }
+}

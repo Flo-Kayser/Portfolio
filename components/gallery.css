@@ -1,0 +1,129 @@
+
+
+.gallery {
+    position: relative;
+    width: 90%;
+    aspect-ratio: 16/9;
+    margin-bottom: 10rem;
+}
+
+.gallery .gallery-slide .gallery-item {
+    width: 8rem;
+    height: 8rem;
+    position: absolute;
+    top: 90%;
+    border-radius: 2rem;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, .5);
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.gallery-slide .gallery-item:nth-child(1),
+.gallery-slide .gallery-item:nth-child(2) {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 2rem;
+    width: 100%;
+    height: 100%;
+
+}
+
+.gallery-slide .gallery-item:nth-child(3) {
+    left: 70%;
+}
+
+.gallery-slide .gallery-item:nth-child(4) {
+    left: calc(70% + 9rem);
+}
+
+.gallery-slide .gallery-item:nth-child(5) {
+    left: calc(70% + 18rem);
+}
+
+.gallery-slide .gallery-item:nth-child(n + 6) {
+    left: calc(70% + 27rem);
+    opacity: 0;
+}
+
+.gallery-item .gallery-content {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    width: auto;
+    text-align: left;
+    color: #eee;
+    display: none;
+}
+
+
+.gallery-slide .gallery-item:nth-child(2) .gallery-content {
+    display: block;
+}
+
+.gallery-content .gallery-img-name {
+    font-size: 80%;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
+}
+
+.gallery-content .gallery-img-subtext {
+    margin-top: .4rem;
+    font-size: 60%;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
+}
+
+
+
+@keyframes animate {
+    from {
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+    }
+}
+
+.gallery-slider-buttons {
+    width: 100%;
+    position: absolute;
+    bottom: -4rem;
+}
+
+.gallery-slider-buttons button {
+    width: 18%;
+    height: auto;
+    border-radius: 2rem;
+    padding: .4rem;
+    border: none;
+    cursor: pointer;
+    /* margin: 1rem; */
+    border: 1px solid #000;
+    transition: 0.3s;
+    font-size: 1.4rem;
+}
+
+.gallery-slider-buttons button:hover {
+    background: #ababab;
+    color: #fff;
+}
+
+
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Damit das Video den Container vollständig abdeckt */
+    border-radius: 2rem;
+}
+
