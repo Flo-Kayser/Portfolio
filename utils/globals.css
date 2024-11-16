@@ -16,7 +16,7 @@ body {
     align-items: center;
     scroll-behavior: smooth;
     overflow-x: hidden;
-    
+
 }
 
 *,
@@ -26,35 +26,37 @@ body {
 }
 
 
-section{
-    height: auto;
-    /* justify-self: center; */
+section {
     width: 80%;
 }
 
-fieldset{
+
+fieldset {
     border-radius: 2rem;
     padding: 2rem;
-    
+
 }
-legend,h1{
+
+legend,
+h1 {
     padding: .5rem;
     text-align: center;
     font-size: 3rem;
 }
-.section-title{
+
+.section-title {
     pointer-events: none;
     margin-bottom: .5rem;
 }
 
 
-.wartungspause{
+.wartungspause {
     justify-self: center;
-    
+
 }
 
-@media screen and (max-width:600px){
-    section{
+@media screen and (max-width:600px) {
+    section {
         width: 90%;
     }
 }
