@@ -85,7 +85,7 @@
 
 .project-box-description {
     width: 70%;
-    height: 60px;
+    height: 90px;
     text-align: center;
     margin-top: 1rem;
     transition: color .5s ease;
@@ -101,7 +101,7 @@
     border-radius: 1rem;
     color: var(--hover-accent-color);
     box-shadow: 0 .5rem .8rem rgba(0, 0, 0, .5);
-
+    text-decoration: none;
     cursor: pointer;
     transition: background .3s ease, color .3s ease;
 }
@@ -112,7 +112,7 @@
 
 }
 
-.project-box:hover button{
+.project-box:hover a{
     background: var(--hover-accent-color);
     color: var(--default-color);
 }

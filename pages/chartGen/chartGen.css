@@ -1,0 +1,68 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  
+  --btn-color:#1a530cc4;
+  --btn-hover-color: #8cda34;
+  --btn-hover-font-color:#222;
+  --default-color:#fff;
+  --accent-color: #f7f7f7;
+    font-size: 1rem;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--accent-color);
+}
+
+.container {
+  background-color: var(--default-color);
+  padding: 3rem;
+  border-radius: 3rem;
+  box-shadow: 0 .5rem 4rem rgba(0, 0, 0, 0.5);
+}
+
+.controls {
+  text-align: center;
+  outline: none;
+}
+
+.select,
+.input {
+  padding: .4rem;
+  margin-right: .5rem;
+  border: .1rem solid var(--accent-color);
+  border-radius: .3rem;
+}
+
+.btn {
+  padding: .5rem .8rem;
+  margin: .4rem;
+  background: var(--btn-color);
+  color: var(--default-color);
+  border-radius: .3rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.btn:hover {
+  background: var(--btn-hover-color);
+  color: var(--btn-hover-font-color);
+}
+
+#canvas-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+#copyBtn {
+  min-width: 11rem;
+}
