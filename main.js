@@ -95,3 +95,17 @@ projectBox.forEach(projectBox => {
   };
   contactForm.addEventListener("submit", sendEmail);
 })
+
+// ========== anchor-behavior ==========
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (event) {
+    event.preventDefault(); // Verhindert das normale Verhalten
+    const targetId = this.getAttribute('href').substring(1); // Entfernt das #
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' }); // Sanftes Scrollen
+      history.replaceState(null, null, `#${ targetId }`); // URL aktualisieren, ohne Verlaufs-Eintrag
+    }
+  });
+});
