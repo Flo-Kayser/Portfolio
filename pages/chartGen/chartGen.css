@@ -1,4 +1,4 @@
-
+@import url('../../utils/transitions.css');
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +13,7 @@
 
 body {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -50,7 +51,7 @@ body {
   transition: all 0.5s;
 }
 
-.btn:hover {
+.btn:hover, a:hover{
   background: var(--btn-hover-color);
   color: var(--btn-hover-font-color);
 }
@@ -65,4 +66,16 @@ body {
 
 #copyBtn {
   min-width: 11rem;
+}
+
+a{
+  padding: 1.2rem;
+  margin: 1rem;
+
+  text-decoration: none;
+  background: var(--btn-color);
+  color: var(--default-color);
+  border-radius: .3rem;
+  box-shadow: 0 .3rem 1rem rgba(0, 0, 0, 0.5);
+
 }

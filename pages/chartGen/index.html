@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="chartGen.css" />
+    <script src="/utils/transition.js?v=1.0" defer></script>
+
     <title>Live Diagramm Generator</title>
   </head>
   <body>
+    <div class="transition transition-2 is-active">
+      <span class="transition-text"></span>
+    </div>
     <div class="container">
       <div class="chart-container">
         <div id="canvas-container"></div>
@@ -20,17 +25,26 @@
           <option value="doughnut">Doughnut</option>
           <option value="radar">Radar</option>
         </select>
-        <input type="text" id="labelInput" class="input" placeholder="Beschriftung" />
+        <input
+          type="text"
+          id="labelInput"
+          class="input"
+          placeholder="Beschriftung"
+        />
         <input type="number" id="dataInput" class="input" placeholder="Daten" />
         <button onclick="addData()" class="btn">Daten hinzufügen</button>
-        <br>
+        <br />
         <button onclick="updateChartType()" class="btn">
           Diagrammtyp ändern
         </button>
-        <button onclick="copyChartToClipboard()" class="btn" id="copyBtn">in Zwi-Abl kopieren</button>
+        <button onclick="copyChartToClipboard()" class="btn" id="copyBtn">
+          in Zwi-Abl kopieren
+        </button>
         <button onclick="downloadChart()" class="btn">Download</button>
       </div>
     </div>
+
+    <a href="/index.html" data-title="Portfolio">back to portfolio</a>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
     <script src="chartGen.js"></script>

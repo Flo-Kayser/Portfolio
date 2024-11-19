@@ -9,6 +9,9 @@
 /* Basic global settings */
 @import url('./utils/globals.css');
 
+ /* transition effects */
+ @import url('./utils/transitions.css');
+
 /*  Components */
 @import url('./components/contact.css');
 @import url('./components/navbar.css');
