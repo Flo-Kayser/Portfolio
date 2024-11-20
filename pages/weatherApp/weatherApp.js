@@ -126,8 +126,8 @@ function updateForecastsWeather(weatherData) {
                             ${getWeatherIcon(id)}
                             </span>
                             <h5 class="forecast-item-temp">${Math.round(
-                              temp
-                            )}°C</h5>
+    temp
+  )}°C</h5>
                         </div>`;
   forecastItemContainer.insertAdjacentHTML("beforeend", forecastItem);
 }
@@ -139,3 +139,25 @@ function showDisplaySection(section) {
 
   section.style.display = "flex";
 }
+
+
+
+//random city onload
+const cities = [
+  "Kansas City",
+  "London",
+  "Los Angeles",
+  "Paris",
+  "Tokyo",
+  "Canberra",
+  "Rom",
+  "Dubai",
+  "Rio de Janeiro",
+  "Dresden"
+];
+
+
+window.onload = () => {
+  const randomCity = cities[Math.floor(Math.random() * cities.length)];
+  updateWeatherInfo(randomCity);
+};
