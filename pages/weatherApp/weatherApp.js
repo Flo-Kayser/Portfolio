@@ -77,6 +77,7 @@ async function updateWeatherInfo(city) {
     showDisplaySection(notFoundSection);
     return;
   }
+  console.log(weatherData);
   const {
     name: cityName,
     sys: { country: countryCode },
@@ -166,7 +167,6 @@ async function updateHourlyForecast(city) {
       weather: [{ id }],
     } = forecast;
 
-    // Uhrzeit extrahieren
     const time = new Date(dateTime).toLocaleTimeString("en-GB", {
       hour: "2-digit",
       minute: "2-digit",
@@ -225,3 +225,94 @@ window.onload = () => {
   const randomCity = cities[Math.floor(Math.random() * cities.length)];
   updateWeatherInfo(randomCity);
 };
+
+const arrowBtns = document.querySelectorAll(".favorite-weather-list button");
+
+arrowBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    carousel.scrollLeft +=
+      btn.id === "prev-btn" ? -firstCardWidth : firstCardWidth;
+  });
+});
+
+// ========== Weather List Save Cities ==========
+const markAsFavBtn = document.querySelector(".save-city");
+
+let citiesArray = [];
+
+markAsFavBtn.addEventListener("click", () => {
+  addCityToArray(cityTxt);
+});
+
+function addCityToArray(cityElement) {
+  const cityName = cityElement.textContent;
+
+  if (!citiesArray.includes(cityName)) {
+    citiesArray.push(cityName);
+    console.log(citiesArray);
+    updateWeatherList();
+  } else {
+    console.log(`${cityName} is already marked.`);
+  }
+}
+
+async function updateWeatherList() {
+  const weatherList = document.querySelector(".weather-list");
+  weatherList.innerHTML = ""; // Liste leeren
+
+  const weatherPromises = citiesArray.map(async (cityName) => {
+    const weatherData = await getFetchData("weather", cityName);
+    if (weatherData.cod !== 200) {
+      console.error(`Fehler beim Abrufen der Wetterdaten für ${cityName}`);
+      return null;
+    }
+
+    const {
+      main: { temp },
+      weather: [{ id, main }],
+      sys: { country },
+    } = weatherData;
+
+    let date = new Date(weatherData.dt * 1000); // Unix-Zeitstempel in Millisekunden umwandeln
+    console.log("UTC Date: ", date);
+
+    let timezoneOffset = (weatherData.timezone - 3600) * 1000;
+    console.log("Timezone Offset (ms): ", timezoneOffset);
+
+    let localDate = new Date(date.getTime() + timezoneOffset);
+    console.log("Local Date: ", localDate);
+
+    let localTime = localDate.toLocaleTimeString("en-US", {
+      hour12: false,
+      hour: "2-digit",
+      minute:"2-digit"
+    });
+
+    console.log("Local Time: ", localTime);
+
+    const listItem = document.createElement("li");
+    listItem.innerHTML = `
+      <div class="list-location-date-container">
+            <div class="list-location">
+              <span class="material-symbols-outlined"> location_on </span>
+              <h4 class="list-city-txt">${cityName}</h4>
+              <h4 class="list-country-txt">/ ${country}</h4>
+            </div>
+            
+            <h4 class="list-current-time-txt"><span class="material-symbols-outlined">
+              schedule
+              </span>${localTime}</h4>
+            <h4 class="list-current-data-txt"><span class="material-symbols-outlined">
+              calendar_month
+              </span>${getCurrentDate()}</h4>
+
+              
+          </div>
+    `;
+
+    return listItem;
+  });
+
+  const weatherItems = await Promise.all(weatherPromises);
+  weatherItems.forEach((item) => item && weatherList.appendChild(item));
+}
