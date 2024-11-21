@@ -268,9 +268,10 @@ async function updateWeatherList() {
     }
 
     const {
-      main: { temp },
+      main: { temp, humidity },
       weather: [{ id, main }],
       sys: { country },
+      wind:{speed}
     } = weatherData;
 
     let date = new Date(weatherData.dt * 1000); // Unix-Zeitstempel in Millisekunden umwandeln
@@ -285,7 +286,7 @@ async function updateWeatherList() {
     let localTime = localDate.toLocaleTimeString("en-US", {
       hour12: false,
       hour: "2-digit",
-      minute:"2-digit"
+      minute: "2-digit",
     });
 
     console.log("Local Time: ", localTime);
@@ -305,6 +306,37 @@ async function updateWeatherList() {
             <h4 class="list-current-data-txt"><span class="material-symbols-outlined">
               calendar_month
               </span>${getCurrentDate()}</h4>
+
+              <div class="list-weather-details-container">
+            <div class="list-weather-summary-container">
+              <span class="material-symbols-outlined list-weather-summary-img"
+                >${getWeatherIcon(id)}</span
+              >
+              <div class="list-weather-summary-info">
+                <h1 class="list-temp-txt">${Math.round(temp)}°C</h1>
+                <h3 class="list-condition-txt">${main}</h3>
+              </div>
+            </div>
+            <div class="list-weather-conditions-container">
+              <div class="list-condition-item">
+                <span class="material-symbols-outlined list-humidity-icon">
+                ${updateHumidityIcon(humidity)}
+                </span>
+                <div class="list-condition-info">
+                  <h5 class="regular-txt">Humidity</h5>
+                  <h5 class="list-humidity-value-txt">${humidity}%</h5>
+                </div>
+              </div>
+              <div class="list-condition-item">
+                <span class="material-symbols-outlined list-wind-icon">
+                  air
+                </span>
+                <div class="list-condition-info">
+                  <h5 class="regular-txt">Wind Speed</h5>
+                  <h5 class="list-wind-value-txt"></h5>
+                </div>
+              </div>
+            </div>
 
               
           </div>
