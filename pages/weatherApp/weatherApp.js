@@ -5,6 +5,7 @@ const notFoundSection = document.querySelector(".not-found");
 const searchCitySection = document.querySelector(".search-city");
 const weatherInfoSection = document.querySelector(".weather-info");
 
+const cityTxt = document.querySelector(".city-txt");
 const countryTxt = document.querySelector(".country-txt");
 const tempTxt = document.querySelector(".temp-txt");
 const conditionTxt = document.querySelector(".condition-txt");
@@ -14,9 +15,14 @@ const weatherSummaryImg = document.querySelector(".weather-summary-img");
 const currentDateTxt = document.querySelector(".current-data-txt");
 
 const humidityIcon = document.querySelector(".humidity-icon");
+const windIcon = document.querySelector(".wind-icon");
 
 const forecastItemContainer = document.querySelector(
   ".forecast-item-container"
+);
+
+const hourlyForecastContainer = document.querySelector(
+  ".hourly-forecast-item-container"
 );
 
 const apiKey = "9b55ebd1e0e507bc9118e8c8082551ce";
@@ -60,7 +66,8 @@ function getWeatherIcon(id) {
   if (id <= 622) return "weather_snowy";
   if (id <= 781) return "foggy";
   if (id <= 800) return "clear_day";
-  else return "partly_cloudy_day";
+  if (id <= 802) return "partly_cloudy_day";
+  else return "cloud";
 }
 
 async function updateWeatherInfo(city) {
@@ -70,15 +77,15 @@ async function updateWeatherInfo(city) {
     showDisplaySection(notFoundSection);
     return;
   }
-  console.log(weatherData);
   const {
-    name: country,
+    name: cityName,
+    sys: { country: countryCode },
     main: { temp, humidity },
     weather: [{ id, main }],
     wind: { speed },
   } = weatherData;
 
-  countryTxt.textContent = country;
+  cityTxt.textContent = cityName;
   tempTxt.textContent = Math.round(temp) + "°C";
   conditionTxt.textContent = main;
   humidityValueTxt.textContent = humidity + "%";
@@ -87,9 +94,15 @@ async function updateWeatherInfo(city) {
   weatherSummaryImg.textContent = `${getWeatherIcon(id)}`;
   currentDateTxt.textContent = getCurrentDate();
 
-  humidityIcon.textContent= `${updateHumidityIcon(humidity)}`
+  countryTxt.innerHTML = "/ " + countryCode;
+
+  humidityIcon.textContent = `${updateHumidityIcon(humidity)}`;
+  windIcon.textContent = `${updateWindIcon(speed)}`;
 
   await updateForecastsInfo(city);
+
+  await updateHourlyForecast(city);
+
   showDisplaySection(weatherInfoSection);
 }
 
@@ -130,20 +143,60 @@ function updateForecastsWeather(weatherData) {
                             ${getWeatherIcon(id)}
                             </span>
                             <h5 class="forecast-item-temp">${Math.round(
-    temp
-  )}°C</h5>
+                              temp
+                            )}°C</h5>
                         </div>`;
   forecastItemContainer.insertAdjacentHTML("beforeend", forecastItem);
 }
 
-function updateHumidityIcon(humidity){
-  if(humidity<=35) return "humidity_low"
-  if(humidity<=75) return "humidity_mid"
-  else return "humidity_high"
+async function updateHourlyForecast(city) {
+  const forecastData = await getFetchData("forecast", city);
+
+  if (!forecastData || forecastData.cod !== "200") {
+    return;
+  }
+  const next24Hours = forecastData.list.slice(0, 8);
+
+  hourlyForecastContainer.innerHTML = "";
+
+  next24Hours.forEach((forecast) => {
+    const {
+      dt_txt: dateTime,
+      main: { temp },
+      weather: [{ id }],
+    } = forecast;
+
+    // Uhrzeit extrahieren
+    const time = new Date(dateTime).toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    const forecastItem = `<div class="hourly-forecast-item">
+                            <h5 class="hourly-forecast-time">${time}</h5>
+                            <span class="material-symbols-outlined hourly-forecast-img">
+                              ${getWeatherIcon(id)}
+                            </span>
+                            <h5 class="hourly-forecast-temp">${Math.round(
+                              temp
+                            )}°C</h5>
+                          </div>`;
+
+    // Zum Container hinzufügen
+    hourlyForecastContainer.insertAdjacentHTML("beforeend", forecastItem);
+  });
 }
 
-function updateWindIcon(speed){
-  
+function updateHumidityIcon(humidity) {
+  if (humidity <= 35) return "humidity_low";
+  if (humidity <= 75) return "humidity_mid";
+  else return "humidity_high";
+}
+function updateWindIcon(speed) {
+  if (speed <= 10) return "airwave";
+  if (speed <= 30) return "air";
+  if (speed <= 80) return "storm";
+  else return "tornado";
 }
 
 function showDisplaySection(section) {
@@ -154,8 +207,6 @@ function showDisplaySection(section) {
   section.style.display = "flex";
 }
 
-
-
 //random city onload
 const cities = [
   "Kansas City",
@@ -164,12 +215,11 @@ const cities = [
   "Paris",
   "Tokyo",
   "Canberra",
-  "Rome",
+  "Nairobi",
   "Dubai",
   "Rio de Janeiro",
-  "Dresden"
+  "Dresden",
 ];
-
 
 window.onload = () => {
   const randomCity = cities[Math.floor(Math.random() * cities.length)];

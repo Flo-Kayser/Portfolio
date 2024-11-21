@@ -67,8 +67,8 @@ a:hover{
     display: flex;
     flex-direction: column;
     justify-content: start;
-    width: 300px;
-    height: 500px;
+    width: 330px;
+    height:600px;
     z-index: 1;
     background: linear-gradient(to top, rgba(0, 0, 0, .25),
             rgba(255, 255, 255, .25));
@@ -126,7 +126,7 @@ a:hover{
 .weather-info {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 10px;
     width: 90%;
 }
 
@@ -144,6 +144,13 @@ a:hover{
 
 .regular-txt {
     font-weight: 400;
+}
+
+.forecast-header{
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
 .weather-summary-container {
@@ -176,43 +183,43 @@ a:hover{
     margin-right: 5px;
 }
 
-.forecast-item-container {
+.forecast-item-container ,.hourly-forecast-item-container {
     display: flex;
     gap: 15px;
     overflow-x: scroll;
     padding-bottom: 12px;
 }
 
-.forecast-item {
+.forecast-item , .hourly-forecast-item{
     min-width: 70px;
     background: rgba(0, 0, 0, .1);
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    /* gap: 6px; */
     padding: 10px;
     align-items: center;
     border-radius: 12px;
     transition: all .3s;
 }
 
-.forecast-item:hover {
+.forecast-item:hover , .hourly-forecast-item:hover{
     background: rgba(255, 255, 255, .15);
 }
 
-.forecast-item-img {
+.forecast-item-img , .hourly-forecast-img{
     font-size: 35px;
 }
 
-.forecast-item-container::-webkit-scrollbar {
+.forecast-item-container::-webkit-scrollbar ,.hourly-forecast-item-container::-webkit-scrollbar{
     height: 8px;
 }
 
-.forecast-item-container::-webkit-scrollbar-track {
+.forecast-item-container::-webkit-scrollbar-track ,.hourly-forecast-item-container ::-webkit-scrollbar-track{
     background: rgba(0, 0, 0, .1);
     border-radius: 99px;
 }
 
-.forecast-item-container::-webkit-scrollbar-thumb {
+.forecast-item-container::-webkit-scrollbar-thumb , .hourly-forecast-item-container::-webkit-scrollbar-thumb{
     background: rgba(0, 0, 0, .15);
     border-radius: 99px;
 }
