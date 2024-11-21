@@ -13,6 +13,8 @@ const windValueTxt = document.querySelector(".wind-value-txt");
 const weatherSummaryImg = document.querySelector(".weather-summary-img");
 const currentDateTxt = document.querySelector(".current-data-txt");
 
+const humidityIcon = document.querySelector(".humidity-icon");
+
 const forecastItemContainer = document.querySelector(
   ".forecast-item-container"
 );
@@ -85,6 +87,8 @@ async function updateWeatherInfo(city) {
   weatherSummaryImg.textContent = `${getWeatherIcon(id)}`;
   currentDateTxt.textContent = getCurrentDate();
 
+  humidityIcon.textContent= `${updateHumidityIcon(humidity)}`
+
   await updateForecastsInfo(city);
   showDisplaySection(weatherInfoSection);
 }
@@ -132,6 +136,16 @@ function updateForecastsWeather(weatherData) {
   forecastItemContainer.insertAdjacentHTML("beforeend", forecastItem);
 }
 
+function updateHumidityIcon(humidity){
+  if(humidity<=35) return "humidity_low"
+  if(humidity<=75) return "humidity_mid"
+  else return "humidity_high"
+}
+
+function updateWindIcon(speed){
+  
+}
+
 function showDisplaySection(section) {
   [weatherInfoSection, searchCitySection, notFoundSection].forEach(
     (section) => (section.style.display = "none")
@@ -150,7 +164,7 @@ const cities = [
   "Paris",
   "Tokyo",
   "Canberra",
-  "Rom",
+  "Rome",
   "Dubai",
   "Rio de Janeiro",
   "Dresden"
