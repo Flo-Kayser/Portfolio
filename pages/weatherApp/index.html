@@ -1,203 +1,207 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="weatherApp.css" />
-  </head>
-  <body>
-    <!-- <div class="transition transition-2 is-active">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="weatherApp.css" />
+</head>
+
+<body>
+  <!-- <div class="transition transition-2 is-active">
         <span class="transition-text"></span>
       </div> -->
 
-    <a href="../../index.html" data-title="Portfolio">back to portfolio</a>
+  <a href="../../index.html" data-title="Portfolio">back to portfolio</a>
 
-    <div class="weather-container">
-      <div class="input-container">
-        <input type="text" class="city-input" placeholder="Search City" />
-        <button class="search-btn">
-          <span class="material-symbols-outlined"> search </span>
-        </button>
+  <div class="weather-container">
+    <div class="input-container">
+      <input type="text" class="city-input" placeholder="Search City" />
+      <button class="search-btn">
+        <span class="material-symbols-outlined"> search </span>
+      </button>
+    </div>
+
+    <section class="weather-info" style="display: none">
+      <div class="location-date-container">
+        <div class="location">
+          <span class="material-symbols-outlined"> location_on </span>
+          <h4 class="city-txt"></h4>
+          <h4 class="country-txt"></h4>
+        </div>
+        <h5 class="current-data-txt regular-txt"></h5>
       </div>
 
-      <section class="weather-info" style="display: none">
-        <div class="location-date-container">
-          <div class="location">
+      <div class="weather-summary-container">
+        <span class="material-symbols-outlined weather-summary-img"></span>
+        <div class="weather-summary-info">
+          <h1 class="temp-txt"></h1>
+          <h3 class="condition-txt regular-txt"></h3>
+        </div>
+      </div>
+
+      <div class="weather-conditions-container">
+        <div class="condition-item">
+          <span class="material-symbols-outlined humidity-icon">
+            water_drop
+          </span>
+          <div class="condition-info">
+            <h5 class="regular-txt">Humidity</h5>
+            <h5 class="humidity-value-txt"></h5>
+          </div>
+        </div>
+        <div class="condition-item">
+          <span class="material-symbols-outlined wind-icon"> air </span>
+          <div class="condition-info">
+            <h5 class="regular-txt">Wind Speed</h5>
+            <h5 class="wind-value-txt"></h5>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="forecast-header">Forecast for the next 24 hours:</h2>
+      </div>
+      <div class="hourly-forecast-item-container">
+        <div class="hourly-forecast-item">
+          <h5 class="hourly-forecast-time">15</h5>
+          <span class="material-symbols-outlined hourly-forecast-img">
+            cloud
+          </span>
+          <h5 class="hourly-forecast-temp">24°C</h5>
+        </div>
+        <div class="hourly-forecast-item">
+          <h5 class="hourly-forecast-time">15</h5>
+          <span class="material-symbols-outlined hourly-forecast-img">
+            cloud
+          </span>
+          <h5 class="hourly-forecast-temp">24°C</h5>
+        </div>
+        <div class="hourly-forecast-item">
+          <h5 class="hourly-forecast-time">15</h5>
+          <span class="material-symbols-outlined hourly-forecast-img">
+            cloud
+          </span>
+          <h5 class="hourly-forecast-temp">24°C</h5>
+        </div>
+        <div class="hourly-forecast-item">
+          <h5 class="hourly-forecast-time">15</h5>
+          <span class="material-symbols-outlined hourly-forecast-img">
+            cloud
+          </span>
+          <h5 class="hourly-forecast-temp">24°C</h5>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="forecast-header">Forecast for the next days:</h2>
+      </div>
+      <div class="forecast-item-container">
+        <div class="forecast-item">
+          <h5 class="forecast-item-date regular-txt"></h5>
+          <span class="material-symbols-outlined forecast-item-img"></span>
+          <h5 class="forecast-item-temp"></h5>
+        </div>
+      </div>
+
+      <button class="mark-as-fav">mark as favorite</button>
+    </section>
+    <section class="search-city section-message">
+      <h1>Search City</h1>
+      <h4 class="regular-txt">
+        Find out about the weather <br />
+        conditions in your city!
+      </h4>
+    </section>
+    <section class="not-found section-message" style="display: none">
+      <h1>#404 Error</h1>
+      <h1>CITY NOT FOUND</h1>
+      <h4 class="regular-txt">Check your Spelling</h4>
+    </section>
+  </div>
+
+  <div class="vertical-line"></div>
+
+  <div class="favorite-weather-list">
+    <ul class="weather-list">
+      <li>
+        <div class="list-location-date-container">
+          <div class="list-location">
             <span class="material-symbols-outlined"> location_on </span>
-            <h4 class="city-txt"></h4>
-            <h4 class="country-txt"></h4>
+            <h4 class="list-city-txt">Dresden</h4>
+            <h4 class="list-country-txt">/De</h4>
           </div>
-          <h5 class="current-data-txt regular-txt"></h5>
-        </div>
 
-        <div class="weather-summary-container">
-          <span class="material-symbols-outlined weather-summary-img"></span>
-          <div class="weather-summary-info">
-            <h1 class="temp-txt"></h1>
-            <h3 class="condition-txt regular-txt"></h3>
-          </div>
+          <h4 class="list-current-time-txt">
+            <span class="material-symbols-outlined"> schedule </span>5 :00
+          </h4>
+          <h4 class="list-current-data-txt">
+            <span class="material-symbols-outlined"> calendar_month </span>5
+            aug
+          </h4>
         </div>
-
-        <div class="weather-conditions-container">
-          <div class="condition-item">
-            <span class="material-symbols-outlined humidity-icon">
-              water_drop
-            </span>
-            <div class="condition-info">
-              <h5 class="regular-txt">Humidity</h5>
-              <h5 class="humidity-value-txt"></h5>
+        <div class="list-weather-details-container">
+          <div class="list-weather-summary-container">
+            <span class="material-symbols-outlined list-weather-summary-img">cloud</span>
+            <div class="list-weather-summary-info">
+              <h1 class="list-temp-txt">29</h1>
+              <h3 class="list-condition-txt">clouds</h3>
             </div>
           </div>
-          <div class="condition-item">
-            <span class="material-symbols-outlined wind-icon"> air </span>
-            <div class="condition-info">
-              <h5 class="regular-txt">Wind Speed</h5>
-              <h5 class="wind-value-txt"></h5>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h2 class="forecast-header">Forecast for the next 24 hours:</h2>
-        </div>
-        <div class="hourly-forecast-item-container">
-          <div class="hourly-forecast-item">
-            <h5 class="hourly-forecast-time">15</h5>
-            <span class="material-symbols-outlined hourly-forecast-img">
-              cloud
-            </span>
-            <h5 class="hourly-forecast-temp">24°C</h5>
-          </div>
-          <div class="hourly-forecast-item">
-            <h5 class="hourly-forecast-time">15</h5>
-            <span class="material-symbols-outlined hourly-forecast-img">
-              cloud
-            </span>
-            <h5 class="hourly-forecast-temp">24°C</h5>
-          </div>
-          <div class="hourly-forecast-item">
-            <h5 class="hourly-forecast-time">15</h5>
-            <span class="material-symbols-outlined hourly-forecast-img">
-              cloud
-            </span>
-            <h5 class="hourly-forecast-temp">24°C</h5>
-          </div>
-          <div class="hourly-forecast-item">
-            <h5 class="hourly-forecast-time">15</h5>
-            <span class="material-symbols-outlined hourly-forecast-img">
-              cloud
-            </span>
-            <h5 class="hourly-forecast-temp">24°C</h5>
-          </div>
-        </div>
-
-        <div>
-          <h2 class="forecast-header">Forecast for the next days:</h2>
-        </div>
-        <div class="forecast-item-container">
-          <div class="forecast-item">
-            <h5 class="forecast-item-date regular-txt"></h5>
-            <span class="material-symbols-outlined forecast-item-img"></span>
-            <h5 class="forecast-item-temp"></h5>
-          </div>
-        </div>
-
-        <button class="save-city">mark as favorite</button>
-      </section>
-      <section class="search-city section-message">
-        <h1>Search City</h1>
-        <h4 class="regular-txt">
-          Find out about the weather <br />
-          conditions in your city!
-        </h4>
-      </section>
-      <section class="not-found section-message" style="display: none">
-        <h1>#404 Error</h1>
-        <h1>CITY NOT FOUND</h1>
-        <h4 class="regular-txt">Check your Spelling</h4>
-      </section>
-    </div>
-
-    <div class="vertical-line"></div>
-
-    <div class="favorite-weather-list">
-      <ul class="weather-list">
-        <li>
-          <div class="list-location-date-container">
-            <div class="list-location">
-              <span class="material-symbols-outlined"> location_on </span>
-              <h4 class="list-city-txt">Dresden</h4>
-              <h4 class="list-country-txt">/De</h4>
-            </div>
-
-            <h4 class="list-current-time-txt">
-              <span class="material-symbols-outlined"> schedule </span>5 :00
-            </h4>
-            <h4 class="list-current-data-txt">
-              <span class="material-symbols-outlined"> calendar_month </span>5
-              aug
-            </h4>
-          </div>
-          <div class="list-weather-details-container">
-            <div class="list-weather-summary-container">
-              <span class="material-symbols-outlined list-weather-summary-img"
-                >cloud</span
-              >
-              <div class="list-weather-summary-info">
-                <h1 class="list-temp-txt">29</h1>
-                <h3 class="list-condition-txt">clouds</h3>
+          <div class="list-weather-conditions-container">
+            <div class="list-condition-item">
+              <span class="material-symbols-outlined list-humidity-icon">
+                water_drop
+              </span>
+              <div class="list-condition-info">
+                <h5 class="regular-txt">Humidity</h5>
+                <h5 class="list-humidity-value-txt"></h5>
               </div>
             </div>
-            <div class="list-weather-conditions-container">
-              <div class="list-condition-item">
-                <span class="material-symbols-outlined list-humidity-icon">
-                  water_drop
-                </span>
-                <div class="list-condition-info">
-                  <h5 class="regular-txt">Humidity</h5>
-                  <h5 class="list-humidity-value-txt"></h5>
-                </div>
-              </div>
-              <div class="list-condition-item">
-                <span class="material-symbols-outlined list-wind-icon">
-                  air
-                </span>
-                <div class="list-condition-info">
-                  <h5 class="regular-txt">Wind Speed</h5>
-                  <h5 class="list-wind-value-txt"></h5>
-                </div>
+            <div class="list-condition-item">
+              <span class="material-symbols-outlined list-wind-icon">
+                air
+              </span>
+              <div class="list-condition-info">
+                <h5 class="">Wind Speed</h5>
+                <h5 class="list-wind-value-txt"></h5>
               </div>
             </div>
           </div>
-        </li>
-        <li>
-          <span class="material-symbols-outlined"> location_on </span>
-          <h4 class="">Leipzig</h4>
-          <h4 class="">/ De</h4>
-        </li>
-        <li>
-          <span class="material-symbols-outlined"> location_on </span>
-          <h4 class="">Berlin</h4>
-          <h4 class="">/ De</h4>
-        </li>
-        <li>
-          <span class="material-symbols-outlined"> location_on </span>
-          <h4 class="">Köln</h4>
-          <h4 class="">/ De</h4>
-        </li>
-        <li>
-          <span class="material-symbols-outlined"> location_on </span>
-          <h4 class="">Hamburg</h4>
-          <h4 class="">/ De</h4>
-        </li>
-      </ul>
-    </div>
-    <script src="weatherApp.js" defer></script>
-    <script src="../../utils/transition.js?vs=1.0" defer></script>
-  </body>
+        </div>
+        <button class="unmark-as-fav"><span class="material-symbols-outlined">
+            circle
+          </span>
+          <span class="material-symbols-outlined">
+            close
+          </span> </button>
+      </li>
+      <li>
+        <span class="material-symbols-outlined"> location_on </span>
+        <h4 class="">Leipzig</h4>
+        <h4 class="">/ De</h4>
+      </li>
+      <li>
+        <span class="material-symbols-outlined"> location_on </span>
+        <h4 class="">Berlin</h4>
+        <h4 class="">/ De</h4>
+      </li>
+      <li>
+        <span class="material-symbols-outlined"> location_on </span>
+        <h4 class="">Köln</h4>
+        <h4 class="">/ De</h4>
+      </li>
+      <li>
+        <span class="material-symbols-outlined"> location_on </span>
+        <h4 class="">Hamburg</h4>
+        <h4 class="">/ De</h4>
+      </li>
+    </ul>
+  </div>
+  <script src="weatherApp.js" defer></script>
+  <script src="../../utils/transition.js?vs=1.0" defer></script>
+</body>
+
 </html>

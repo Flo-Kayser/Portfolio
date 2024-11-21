@@ -144,8 +144,8 @@ function updateForecastsWeather(weatherData) {
                             ${getWeatherIcon(id)}
                             </span>
                             <h5 class="forecast-item-temp">${Math.round(
-                              temp
-                            )}°C</h5>
+    temp
+  )}°C</h5>
                         </div>`;
   forecastItemContainer.insertAdjacentHTML("beforeend", forecastItem);
 }
@@ -178,8 +178,8 @@ async function updateHourlyForecast(city) {
                               ${getWeatherIcon(id)}
                             </span>
                             <h5 class="hourly-forecast-temp">${Math.round(
-                              temp
-                            )}°C</h5>
+      temp
+    )}°C</h5>
                           </div>`;
 
     // Zum Container hinzufügen
@@ -224,21 +224,15 @@ const cities = [
 window.onload = () => {
   const randomCity = cities[Math.floor(Math.random() * cities.length)];
   updateWeatherInfo(randomCity);
+  updateWeatherList()
 };
 
-const arrowBtns = document.querySelectorAll(".favorite-weather-list button");
 
-arrowBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    carousel.scrollLeft +=
-      btn.id === "prev-btn" ? -firstCardWidth : firstCardWidth;
-  });
-});
 
 // ========== Weather List Save Cities ==========
-const markAsFavBtn = document.querySelector(".save-city");
+const markAsFavBtn = document.querySelector(".mark-as-fav");
 
-let citiesArray = [];
+let citiesArray = JSON.parse(localStorage.getItem('citiesArray')) || [];
 
 markAsFavBtn.addEventListener("click", () => {
   addCityToArray(cityTxt);
@@ -246,19 +240,21 @@ markAsFavBtn.addEventListener("click", () => {
 
 function addCityToArray(cityElement) {
   const cityName = cityElement.textContent;
-
+  
   if (!citiesArray.includes(cityName)) {
     citiesArray.push(cityName);
     console.log(citiesArray);
     updateWeatherList();
+    localStorage.setItem('citiesArray', JSON.stringify(citiesArray));
   } else {
     console.log(`${cityName} is already marked.`);
   }
 }
 
+
 async function updateWeatherList() {
   const weatherList = document.querySelector(".weather-list");
-  weatherList.innerHTML = ""; // Liste leeren
+  weatherList.innerHTML = ""; 
 
   const weatherPromises = citiesArray.map(async (cityName) => {
     const weatherData = await getFetchData("weather", cityName);
@@ -271,23 +267,12 @@ async function updateWeatherList() {
       main: { temp, humidity },
       weather: [{ id, main }],
       sys: { country },
-      wind:{speed}
+      wind: { speed },
+      dt,
+      timezone
     } = weatherData;
 
-    let date = new Date(weatherData.dt * 1000); // Unix-Zeitstempel in Millisekunden umwandeln
-    console.log("UTC Date: ", date);
-
-    let timezoneOffset = (weatherData.timezone - 3600) * 1000;
-    console.log("Timezone Offset (ms): ", timezoneOffset);
-
-    let localDate = new Date(date.getTime() + timezoneOffset);
-    console.log("Local Date: ", localDate);
-
-    let localTime = localDate.toLocaleTimeString("en-US", {
-      hour12: false,
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+    const localTime = getLocalTime(dt, timezone);
 
     console.log("Local Time: ", localTime);
 
@@ -306,6 +291,7 @@ async function updateWeatherList() {
             <h4 class="list-current-data-txt"><span class="material-symbols-outlined">
               calendar_month
               </span>${getCurrentDate()}</h4>
+              </div>
 
               <div class="list-weather-details-container">
             <div class="list-weather-summary-container">
@@ -323,23 +309,25 @@ async function updateWeatherList() {
                 ${updateHumidityIcon(humidity)}
                 </span>
                 <div class="list-condition-info">
-                  <h5 class="regular-txt">Humidity</h5>
-                  <h5 class="list-humidity-value-txt">${humidity}%</h5>
+                  <h4 class="regular-txt">Humidity</h4>
+                  <h4 class="list-humidity-value-txt">${humidity}%</h4>
                 </div>
               </div>
               <div class="list-condition-item">
                 <span class="material-symbols-outlined list-wind-icon">
-                  air
+                  ${updateWindIcon(speed)}
                 </span>
                 <div class="list-condition-info">
-                  <h5 class="regular-txt">Wind Speed</h5>
-                  <h5 class="list-wind-value-txt"></h5>
+                  <h4 class="regular-txt">Wind Speed</h4>
+                  <h4 class="list-wind-value-txt">${speed}</h4>
                 </div>
               </div>
-            </div>
-
-              
+            </div>    
           </div>
+          <button class="unmark-as-fav" datatitle="${cityName}">
+            <span class="material-symbols-outlined">circle</span>
+            <span class="material-symbols-outlined">close</span>
+          </button>
     `;
 
     return listItem;
@@ -348,3 +336,40 @@ async function updateWeatherList() {
   const weatherItems = await Promise.all(weatherPromises);
   weatherItems.forEach((item) => item && weatherList.appendChild(item));
 }
+
+function getLocalTime(unixTimestamp, timezoneOffset) {
+  const date = new Date(unixTimestamp * 1000); // Konvertiere Unix-Timestamp in Millisekunden
+  const offsetInMs = (timezoneOffset - 3600) * 1000; // Berechne Zeitzonenverschiebung in Millisekunden
+  const localDate = new Date(date.getTime() + offsetInMs); // Wende Zeitzonenverschiebung an
+
+  const minutes = localDate.getMinutes();
+  const roundedMinutes = Math.floor(minutes / 15) * 15; // Auf die vergangene Viertelstunde runden
+  localDate.setMinutes(roundedMinutes, 0, 0); // Minuten setzen und Sekunden + Millisekunden auf 0
+
+  
+  // Formatierung der lokalen Zeit
+  return localDate.toLocaleTimeString("en-US", {
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+
+const unmarkAsFavBtn = document.querySelector(".unmark-as-fav");
+
+document.querySelector(".weather-list").addEventListener("click", (event) => {
+  if (event.target.closest(".unmark-as-fav")) {
+    const titleToRemove = event.target.closest(".unmark-as-fav").getAttribute("datatitle");
+    removeCityfromArray(titleToRemove);
+  }
+});
+
+function removeCityfromArray(cityTitle) {
+  // Filter the array to remove the city with the matching title
+  citiesArray = citiesArray.filter(city => city !== cityTitle);
+  console.log(citiesArray);
+  updateWeatherList()
+  localStorage.setItem('citiesArray', JSON.stringify(citiesArray));
+}
+

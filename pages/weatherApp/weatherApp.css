@@ -180,7 +180,7 @@ a:hover {
     margin-right: 5px;
 }
 
-.save-city{
+.mark-as-fav{
     width:100%;
     padding: 5px;
     background: rgba(0, 0, 0, .15);
@@ -191,7 +191,7 @@ a:hover {
     transition: .3s;
 }
 
-.save-city:hover{
+.mark-as-fav:hover{
     background:rgba(255, 255, 255, .15);
 }
 /* Forecast Start */
@@ -287,12 +287,13 @@ a:hover {
     list-style: none;
     border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
-    height: 200px;
+    height: auto;
     display: flex;
     flex-direction: column;
     background: rgba(0, 0, 0, .5);
     transition: .3s;
-
+    width: 100%;
+    position: relative;
     
 
 }
@@ -330,6 +331,8 @@ a:hover {
 .list-weather-details-container{
     display: grid;
     grid-template-columns: .5fr 1fr;
+    width: 100%;
+    padding-bottom: 10px;
 }
 .list-weather-summary-container{
     display: flex;
@@ -350,4 +353,67 @@ a:hover {
 
 .list-weather-conditions-container{
     margin-left: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-condition-item{display: flex;}
+
+.unmark-as-fav{
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    border: none;
+    right: 0;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, .25);
+    transition: .3s;
+    transition-delay: 0s;
+
+}
+
+.unmark-as-fav span{
+    display: flex;
+    position: absolute;
+    transition: .5s;
+}
+.unmark-as-fav span:nth-child(2){
+    font-size: 18px;
+}
+.unmark-as-fav:hover span{
+    color: #fff;
+}
+.unmark-as-fav:hover span:nth-child(1){
+    color: #fff;
+    transition-delay: .2s;
+}
+
+.unmark-as-fav::before{
+    white-space: nowrap;
+    content: "discard city";
+    font-size: 13px;
+    position: absolute;
+    right: 25px;
+    top: -1px;
+    color: rgba(255, 255, 255, .15);
+    opacity: 0; /* Startwert unsichtbar */
+    visibility: hidden; /* Unsichtbar und blockiert Interaktionen */
+    transition: opacity .5s, visibility 0s .5s, color .5s;
+}
+
+.unmark-as-fav:hover::before{
+    opacity: 1; /* Sichtbar machen */
+    visibility: visible; /* Sichtbar machen */
+    transition: opacity 1.5s;
+    color: #fff;
 }
