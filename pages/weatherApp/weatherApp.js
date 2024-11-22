@@ -1,3 +1,5 @@
+// ========== weatherApp.js ==========
+
 const cityInput = document.querySelector(".city-input");
 const searchBtn = document.querySelector(".search-btn");
 
@@ -24,9 +26,10 @@ const forecastItemContainer = document.querySelector(
 const hourlyForecastContainer = document.querySelector(
   ".hourly-forecast-item-container"
 );
+// openWeather api key
+const apiKey = "9b55ebd1e0e507bc9118e8c8082551ce"; 
 
-const apiKey = "9b55ebd1e0e507bc9118e8c8082551ce";
-
+// Search City
 searchBtn.addEventListener("click", () => {
   if (cityInput.value.trim() != "") {
     updateWeatherInfo(cityInput.value);
@@ -34,7 +37,7 @@ searchBtn.addEventListener("click", () => {
     cityInput.blur();
   }
 });
-
+// Search City with "ENTER"
 cityInput.addEventListener("keydown", (event) => {
   if (event.key == "Enter" && cityInput.value.trim() != "") {
     updateWeatherInfo(cityInput.value);
@@ -43,13 +46,14 @@ cityInput.addEventListener("keydown", (event) => {
   }
 });
 
+// get Data from API
 async function getFetchData(endpoint, city) {
   const apiUrl = `https://api.openweathermap.org/data/2.5/${endpoint}?q=${city}&appid=${apiKey}&units=metric`;
 
   const response = await fetch(apiUrl);
   return response.json();
 }
-
+// get todays Date
 function getCurrentDate() {
   const currentDate = new Date();
   const options = {
@@ -59,7 +63,7 @@ function getCurrentDate() {
   };
   return currentDate.toLocaleDateString("en-GB", options);
 }
-
+// get weather icon on base of id
 function getWeatherIcon(id) {
   if (id <= 232) return "thunderstorm";
   if (id <= 531) return "rainy";
@@ -69,7 +73,7 @@ function getWeatherIcon(id) {
   if (id <= 802) return "partly_cloudy_day";
   else return "cloud";
 }
-
+// update the DIsplay for the selected city
 async function updateWeatherInfo(city) {
   const weatherData = await getFetchData("weather", city);
 
@@ -106,7 +110,7 @@ async function updateWeatherInfo(city) {
 
   showDisplaySection(weatherInfoSection);
 }
-
+// get forecast vor the next days
 async function updateForecastsInfo(city) {
   const forecastsData = await getFetchData("forecast", city);
 
@@ -123,7 +127,7 @@ async function updateForecastsInfo(city) {
     }
   });
 }
-
+// create forecast item
 function updateForecastsWeather(weatherData) {
   const {
     dt_txt: date,
@@ -149,7 +153,7 @@ function updateForecastsWeather(weatherData) {
                         </div>`;
   forecastItemContainer.insertAdjacentHTML("beforeend", forecastItem);
 }
-
+// create hourly-forecast item 
 async function updateHourlyForecast(city) {
   const forecastData = await getFetchData("forecast", city);
 
@@ -198,7 +202,7 @@ function updateWindIcon(speed) {
   if (speed <= 80) return "storm";
   else return "tornado";
 }
-
+// select section(normal vs city not found)
 function showDisplaySection(section) {
   [weatherInfoSection, searchCitySection, notFoundSection].forEach(
     (section) => (section.style.display = "none")
@@ -220,7 +224,6 @@ const cities = [
   "Rio de Janeiro",
   "Dresden",
 ];
-
 window.onload = () => {
   const randomCity = cities[Math.floor(Math.random() * cities.length)];
   updateWeatherInfo(randomCity);
@@ -238,6 +241,7 @@ markAsFavBtn.addEventListener("click", () => {
   addCityToArray(cityTxt);
 });
 
+// mark city as fav
 function addCityToArray(cityElement) {
   const cityName = cityElement.textContent;
   
@@ -251,7 +255,7 @@ function addCityToArray(cityElement) {
   }
 }
 
-
+//create fav-list element
 async function updateWeatherList() {
   const weatherList = document.querySelector(".weather-list");
   weatherList.innerHTML = ""; 
@@ -259,7 +263,7 @@ async function updateWeatherList() {
   const weatherPromises = citiesArray.map(async (cityName) => {
     const weatherData = await getFetchData("weather", cityName);
     if (weatherData.cod !== 200) {
-      console.error(`Fehler beim Abrufen der Wetterdaten für ${cityName}`);
+      console.error(`error while fetch data for ${cityName}`);
       return null;
     }
 
@@ -337,14 +341,15 @@ async function updateWeatherList() {
   weatherItems.forEach((item) => item && weatherList.appendChild(item));
 }
 
+// get local time for cities in fav-list
 function getLocalTime(unixTimestamp, timezoneOffset) {
-  const date = new Date(unixTimestamp * 1000); // Konvertiere Unix-Timestamp in Millisekunden
-  const offsetInMs = (timezoneOffset - 3600) * 1000; // Berechne Zeitzonenverschiebung in Millisekunden
-  const localDate = new Date(date.getTime() + offsetInMs); // Wende Zeitzonenverschiebung an
+  const date = new Date(unixTimestamp * 1000); 
+  const offsetInMs = (timezoneOffset - 3600) * 1000; 
+  const localDate = new Date(date.getTime() + offsetInMs); 
 
   const minutes = localDate.getMinutes();
-  const roundedMinutes = Math.floor(minutes / 15) * 15; // Auf die vergangene Viertelstunde runden
-  localDate.setMinutes(roundedMinutes, 0, 0); // Minuten setzen und Sekunden + Millisekunden auf 0
+  const roundedMinutes = Math.floor(minutes / 15) * 15; 
+  localDate.setMinutes(roundedMinutes, 0, 0); 
 
   
   // Formatierung der lokalen Zeit
@@ -355,18 +360,15 @@ function getLocalTime(unixTimestamp, timezoneOffset) {
   });
 }
 
-
+//discard city from fav-list
 const unmarkAsFavBtn = document.querySelector(".unmark-as-fav");
-
 document.querySelector(".weather-list").addEventListener("click", (event) => {
   if (event.target.closest(".unmark-as-fav")) {
     const titleToRemove = event.target.closest(".unmark-as-fav").getAttribute("datatitle");
     removeCityfromArray(titleToRemove);
   }
 });
-
 function removeCityfromArray(cityTitle) {
-  // Filter the array to remove the city with the matching title
   citiesArray = citiesArray.filter(city => city !== cityTitle);
   console.log(citiesArray);
   updateWeatherList()
