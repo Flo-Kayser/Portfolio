@@ -1,0 +1,170 @@
+@import url('../../utils/transitions.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat Alternates", sans-serif;
+    --bg-color: #121212
+}
+
+body{
+    color: #e4e4e4;
+    background: var(--bg-color);
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    
+}
+
+/* card template */
+.content-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    row-gap: 20px;
+    column-gap: 20px;
+    justify-content: center;
+}
+
+.card{
+    position: relative;
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.card .preview{
+    position: relative;
+    width: 100%;
+    height: 340px;
+    background: green;
+    border-radius:15px ;
+}
+
+.card .description-container{
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background: #232949;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+}
+
+.card .description-container .rating{
+    position: absolute;
+    top: -80px;
+    height: 80px;
+    width: 50%;
+    background: #232949;
+    border-top: 10px solid var(--bg-color);
+    border-right: 10px solid var(--bg-color);
+    border-top-right-radius: 25px;
+}
+
+.card .description-container .rating::before{
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: -10px -10px 0 var(--bg-color);
+}
+.card .description-container .rating::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -25px;
+    width: 25px;
+    height: 25px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: -10px 10px 0 #232949;
+}
+
+.card .preview::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: -10px 10px 0 var(--bg-color);
+}
+
+.card .preview::after{
+    content: "";
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: -10px 10px 0 var(--bg-color);
+}
+
+.card .description-container .rating div{
+    position: relative;
+    text-align: center;
+    color: black;
+    background: #fff;
+    width: 80%;
+    top: 20%;
+    left: 10%;
+    display: block;
+    border-radius: 7px;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 5px;
+
+}
+
+.description{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    gap: 5px;
+    padding: 15px;
+    height: 150px;
+    width: 100%;
+}
+.description h4{
+    height: 20px;
+    line-height: 20px;
+    font-size: 19px;
+}
+
+.description p{
+height: 100%;
+
+overflow-y: auto;
+}
+
+.description p::-webkit-scrollbar{
+    width: 8px;
+
+}
+
+.description p::-webkit-scrollbar-track{
+    background: rgba(0, 0, 0, .13);
+    border-radius: 40px;
+    border: transparent;
+}
+
+.description p::-webkit-scrollbar-thumb{
+    background:rgba(0, 0, 0, .15);
+    border-radius: 40px;
+    border: transparent;
+}
