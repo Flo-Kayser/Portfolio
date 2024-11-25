@@ -79,6 +79,7 @@ function updateButtonText() {
     BTN = button
     GIF = animation*/
 const cards = document.querySelectorAll(".card");
+
 function filterCards() {
   const selectedItems = document.querySelectorAll(".select-item.checked");
   const selectedTitles = Array.from(selectedItems).map((item) =>
@@ -87,11 +88,17 @@ function filterCards() {
 
   cards.forEach((card) => {
     const cardTitle = card.getAttribute("data-title");
-    if (selectedTitles.includes(cardTitle) || selectedTitles.includes("All")) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
+
+    // Split the cardTitle by commas if it contains multiple values
+    const cardTitlesArray = cardTitle.split(",").map(title=>title.trim());
+
+    // Check if any selected title matches a value in cardTitlesArray
+    const shouldDisplay = selectedTitles.some(
+      (title) => title === "All" || cardTitlesArray.includes(title)
+    );
+
+    // Display or hide the card based on the condition
+    card.style.display = shouldDisplay ? "block" : "none";
   });
 }
 
@@ -121,3 +128,12 @@ cSV1_inputSlider.oninput = () => {
 cSV1_inputSlider.onblur = () => {
   cSV1_sliderValue.classList.remove("show");
 };
+// card 1 END - customSliderV1
+
+// card 2 - btn 01
+const btnV1_menuToggle = document.querySelector(".btn-v1 .menu-toggle");
+const btnV1_menu = document.querySelector(".btn-v1");
+
+btnV1_menuToggle.addEventListener("click", () => {
+  btnV1_menu.classList.toggle("active");
+});

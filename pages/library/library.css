@@ -4,8 +4,10 @@
 
 
 /* import components */
+/* slider */
 @import url('components/customSliderV1.css');
-
+/* btn */
+@import url("components/btnV1.css");
 
 * {
     margin: 0;
@@ -19,7 +21,7 @@
 }
 
 body {
-    color: var(--color);
+    color: var(--card-des-bg-color);
     background: var(--bg-color);
     justify-content: center;
     align-items: center;
@@ -310,6 +312,7 @@ nav a{
     padding: 15px;
     height: 150px;
     width: 100%;
+    color: var(--color);
     
 }
 

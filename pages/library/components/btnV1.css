@@ -1,0 +1,103 @@
+/* btnV1.css */
+
+.btn-v1 {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-v1 li {
+    position: absolute;
+    left: 0;
+    list-style: none;
+    transform: rotate(0deg) translateX(100px);
+    transform-origin: 130px;
+    transition: .5s;
+    transition-delay: calc(.1s * var(--i));
+}
+
+.btn-v1.active li {
+    transform: rotate(calc(360deg / 8 * var(--i)));
+}
+
+.btn-v1 a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    text-decoration: none;
+    font-size: 22px;
+    border-radius: 50%;
+    transform: rotate(calc(360deg / -8 * var(--i)));
+    transition: 1s;
+    color: transparent;
+    transition-delay: 1.5s;
+    filter: drop-shadow(0 0 2px var(--clr));
+}
+
+.btn-v1.active a {
+    color: var(--clr);
+}
+
+.btn-v1 a::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--clr);
+    transform: rotate(calc(90deg * var(--i))) translate(0, 25px);
+    transition: width 1s, height 1s, transform 1s;
+    transition-delay: 1s, 1s, 2s;
+    z-index: 0;
+}
+
+.btn-v1.active a::after {
+    width: 50px;
+    height: 50px;
+    background: var(--card-pre-bg-color);
+    border: 2px solid var(--clr);
+    transform: rotate(calc(0 * var(--i)));
+    transition: width .5s, height .5s, transform .5s;
+    transition-delay: 1.5s, .5s, .5s;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 2px var(--clr));
+    rotate: 135deg;
+    z-index: -1;
+}
+.btn-v1.active li:hover a span{
+    transition: .5s;
+    color: #fff
+}
+
+.btn-v1.active li:hover a::after {
+    transition: .5s;
+    background: var(--clr)
+}
+
+
+
+
+.btn-v1 .menu-toggle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    color: var(--card-des-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 101;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 32px;
+    transition: 1.5s;
+}
+
+.btn-v1.active .menu-toggle {
+    transform: rotate(315deg);
+}
