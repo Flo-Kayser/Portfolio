@@ -1,30 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Library</title>
-    <link rel="stylesheet" href="library.css" />
-  </head>
-  <body>
-    <!-- <div class="transition transition-2 is-active">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library</title>
+  <link rel="stylesheet" href="library.css" />
+</head>
+
+<body>
+  <!-- <div class="transition transition-2 is-active">
       <span class="transition-text"></span>
     </div> -->
 
-    <a href="../../index.html" data-title="Portfolio">back to portfolio</a>
+  <a href="../../index.html" data-title="Portfolio">back to portfolio</a>
 
-    <main class="content-container">
-      <div class="card">
-        <div class="preview"></div>
-        <div class="description-container">
-          <span class="rating"><div>☆★★★★</div></span>
-          <div class="description">
-            <h4>Example Text</h4>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non quae eligendi dignissimos laborum laboriosam fuga dolorum neque quidem numquam architecto totam velit dolores, accusamus, blanditiis hic sed facere perferendis dolore modi iste quibusdam? Doloremque dolorum debitis laudantium non veritatis et quas voluptates, sunt cumque enim distinctio quam! Minus, animi quo.</p>
+  <main class="content-container">
+    <div class="card">
+      <div class="preview">
+        <div class="custom-slider-v1">
+          <div class="slider-value">
+            <span></span>
+          </div>
+          <div class="field">
+            <div class="value left">0</div>
+            <input type="range" min="0" max="200" value="100" steps="1">
+            <div class="value right">200</div>
           </div>
         </div>
       </div>
-    </main>
-    <script src="../../utils/transition.js?vs=1.0" defer></script>
-  </body>
+      <div class="description-container">
+        <div class="get-code">
+          <button>Get Code</button>
+      </div>
+        <div class="description">
+          <h4>Example Text</h4>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non quae eligendi dignissimos laborum laboriosam
+            fuga dolorum neque quidem numquam architecto totam velit dolores, accusamus, blanditiis hic sed facere
+            perferendis dolore modi iste quibusdam? Doloremque dolorum debitis laudantium non veritatis et quas
+            voluptates, sunt cumque enim distinctio quam! Minus, animi quo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="preview">
+        
+      </div>
+      <div class="description-container">
+        <div class="get-code">
+          <button>☆★★★★</button>
+      </div>
+        <div class="description">
+          <h4>Example Text</h4>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non quae eligendi dignissimos laborum laboriosam
+            fuga dolorum neque quidem numquam architecto totam velit dolores, accusamus, blanditiis hic sed facere
+            perferendis dolore modi iste quibusdam? Doloremque dolorum debitis laudantium non veritatis et quas
+            voluptates, sunt cumque enim distinctio quam! Minus, animi quo.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="library.js"></script>
+  <script src="../../utils/transition.js?vs=1.0" defer></script>
+</body>
+
 </html>

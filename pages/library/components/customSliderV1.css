@@ -1,0 +1,92 @@
+/* customSliderV1 */
+
+
+
+.custom-slider-v1 {
+    height: 80px;
+    width: 270px;
+    background: var(--card-des-bg-color);
+    border-radius: 10px;
+    padding: 0 50px 0 35px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .15);
+
+}
+
+.custom-slider-v1 .slider-value {
+    position: relative;
+    width: 100%;
+}
+
+.custom-slider-v1 .slider-value span {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    color: #fff;
+    font-weight: 500;
+    top: -40px;
+    transform: translateX(-50%)scale(0);
+    transform-origin: bottom;
+    transition: transform .3s ease-in-out;
+    line-height: 45px;
+    z-index: 2;
+}
+
+.custom-slider-v1 .slider-value span.show {
+    transform: translate(-50%) scale(1);
+}
+
+.custom-slider-v1 .slider-value span:after {
+    position: absolute;
+    content: "";
+    height: 45px;
+    width: 45px;
+    background: var(--card-des-bg-color);
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border: 3px solid #fff;
+    z-index: -1;
+    border-radius: 50%;
+    border-bottom-right-radius: 0;
+}
+
+
+.custom-slider-v1 .field{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.custom-slider-v1 .field .value {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--card-pre-bg-color);
+}
+
+.custom-slider-v1 .field .value.left {
+    left: -22px;
+}
+.custom-slider-v1 .field .value.right {
+    right: -43px;
+}
+
+.custom-slider-v1 .field input{
+    appearance: none;
+    height: 3px;
+    width: 100%;
+    background: #ddd;
+    border-radius: 5px;
+    outline: navy;
+    border: none;
+}
+
+.custom-slider-v1 .field input::-webkit-slider-thumb{
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    background: var(--card-pre-bg-color);
+    border-radius: 50%;
+    border: 1px solid var(--card-pre-bg-color);
+    cursor: pointer;
+}

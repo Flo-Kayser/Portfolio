@@ -1,25 +1,34 @@
 @import url('../../utils/transitions.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600&display=swap');
 
-*{
+
+
+/* import components */
+@import url('components/customSliderV1.css');
+
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat Alternates", sans-serif;
-    --bg-color: #121212
+    --bg-color: #eee;
+    --color: #fff;
+    --card-des-bg-color:#3a447b;
+    --card-pre-bg-color:#fff;
 }
 
-body{
-    color: #e4e4e4;
+body {
+    color: var(--color);
     background: var(--bg-color);
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
-    
+
 }
 
 /* card template */
-.content-container{
+.content-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -30,7 +39,7 @@ body{
     justify-content: center;
 }
 
-.card{
+.card {
     position: relative;
     width: 300px;
     height: 500px;
@@ -40,35 +49,39 @@ body{
     border-radius: 10px;
 }
 
-.card .preview{
+.card .preview {
     position: relative;
     width: 100%;
     height: 340px;
-    background: green;
-    border-radius:15px ;
+    background: var(--card-pre-bg-color);
+    border-radius: 15px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.card .description-container{
+.card .description-container {
     position: relative;
     width: 100%;
     height: 150px;
-    background: #232949;
+    background: var(--card-des-bg-color);
     border-radius: 15px;
     border-top-left-radius: 0;
 }
 
-.card .description-container .rating{
+.card .description-container .get-code {
     position: absolute;
     top: -80px;
     height: 80px;
     width: 50%;
-    background: #232949;
+    background: var(--card-des-bg-color);
     border-top: 10px solid var(--bg-color);
     border-right: 10px solid var(--bg-color);
     border-top-right-radius: 25px;
 }
 
-.card .description-container .rating::before{
+.card .description-container .get-code::before {
     content: '';
     position: absolute;
     width: 25px;
@@ -77,7 +90,8 @@ body{
     border-radius: 50%;
     box-shadow: -10px -10px 0 var(--bg-color);
 }
-.card .description-container .rating::after{
+
+.card .description-container .get-code::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -86,10 +100,10 @@ body{
     height: 25px;
     background: transparent;
     border-radius: 50%;
-    box-shadow: -10px 10px 0 #232949;
+    box-shadow: -10px 10px 0 var(--card-des-bg-color);
 }
 
-.card .preview::before{
+.card .preview::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -101,7 +115,7 @@ body{
     box-shadow: -10px 10px 0 var(--bg-color);
 }
 
-.card .preview::after{
+.card .preview::after {
     content: "";
     position: absolute;
     bottom: 70px;
@@ -113,11 +127,11 @@ body{
     box-shadow: -10px 10px 0 var(--bg-color);
 }
 
-.card .description-container .rating div{
+.card .description-container .get-code button {
     position: relative;
     text-align: center;
-    color: black;
-    background: #fff;
+    color: var(--card-des-bg-color);
+    background: var(--color);
     width: 80%;
     top: 20%;
     left: 10%;
@@ -126,45 +140,49 @@ body{
     font-weight: 600;
     font-size: 20px;
     padding: 5px;
+    outline: none;
+    border: none;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .15);
+    cursor: pointer;
 
 }
 
-.description{
+.description {
     position: relative;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
     gap: 5px;
     padding: 15px;
     height: 150px;
     width: 100%;
+    
 }
-.description h4{
+
+.description h4 {
     height: 20px;
     line-height: 20px;
     font-size: 19px;
 }
 
-.description p{
-height: 100%;
+.description p {
+    height: 100%;
 
-overflow-y: auto;
+    overflow-y: auto;
 }
 
-.description p::-webkit-scrollbar{
+.description p::-webkit-scrollbar {
     width: 8px;
 
 }
 
-.description p::-webkit-scrollbar-track{
+.description p::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, .13);
     border-radius: 40px;
     border: transparent;
 }
 
-.description p::-webkit-scrollbar-thumb{
-    background:rgba(0, 0, 0, .15);
+.description p::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .15);
     border-radius: 40px;
     border: transparent;
 }
