@@ -4,10 +4,8 @@ const selectBtn = document.querySelector(".select-btn");
 const items = document.querySelectorAll(".select-item");
 const btnTxt = document.querySelector(".select-btn-txt");
 
-
 const selectList = document.querySelector(".select-list-items");
 const selectContainer = document.querySelector(".select-container");
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const allItem = document.querySelector("[data-title='All']");
@@ -15,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updateButtonText();
   filterCards();
 });
-
 
 // open and close selection
 let closeTimeout;
@@ -63,13 +60,17 @@ function updateButtonText() {
   const checkedItems = document.querySelectorAll(".select-item.checked");
 
   if (checkedItems.length === 0) {
-    btnTxt.innerText = "Select";
-  } else {
-    const selectedTitles = Array.from(checkedItems).map((item) =>
-      item.getAttribute("data-title")
-    );
-    btnTxt.innerText = `${selectedTitles.join(", ")}`;
+    const allItem = document.querySelector("[data-title='All']");
+    allItem.classList.add("checked");
+    btnTxt.innerText = "All";
+    filterCards(); // Karten aktualisieren, wenn "All" automatisch gesetzt wird
+    return;
   }
+
+  const selectedTitles = Array.from(checkedItems).map((item) =>
+    item.getAttribute("data-title")
+  );
+  btnTxt.innerText = `${selectedTitles.join(", ")}`;
 }
 
 // func to filter cards by data-title
