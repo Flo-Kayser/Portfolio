@@ -1,67 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="library.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Library</title>
-  <link rel="stylesheet" href="library.css" />
-</head>
-
-<body>
-  <!-- <div class="transition transition-2 is-active">
+  <body>
+    <!-- <div class="transition transition-2 is-active">
       <span class="transition-text"></span>
     </div> -->
 
-  <a href="../../index.html" data-title="Portfolio">back to portfolio</a>
+    <nav>
+      <div class="select-container">
+        <div class="select-btn">
+          <span class="material-symbols-outlined"> arrow_right </span>
+          <span class="select-btn-txt">Select</span>
+        </div>
+        <ul class="select-list-items">
+          <li class="select-item" data-title="All">
+            <div class="checkbox"><span class="material-symbols-outlined"> check </span></div>
+            <span class="select-item-txt">All</span>
+          </li>
+          <li class="select-item" data-title="BTN">
+            <div class="checkbox"><span class="material-symbols-outlined"> check </span></div>
+            <span class="select-item-txt">Buttons</span>
+          </li>
+          <li class="select-item" data-title="SLD">
+            <div class="checkbox"><span class="material-symbols-outlined"> check </span></div>
+            <span class="select-item-txt">Slider</span>
+          </li>
+          <li class="select-item" data-title="GIF">
+            <div class="checkbox"><span class="material-symbols-outlined"> check </span></div>
+            <span class="select-item-txt">Animations</span>
+          </li>
+        </ul>
+      </div>
 
-  <main class="content-container">
-    <div class="card">
-      <div class="preview">
-        <div class="custom-slider-v1">
-          <div class="slider-value">
-            <span></span>
-          </div>
-          <div class="field">
-            <div class="value left">0</div>
-            <input type="range" min="0" max="200" value="100" steps="1">
-            <div class="value right">200</div>
-          </div>
-        </div>
-      </div>
-      <div class="description-container">
-        <div class="get-code">
-          <button>Get Code</button>
-      </div>
-        <div class="description">
-          <h4>Example Text</h4>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non quae eligendi dignissimos laborum laboriosam
-            fuga dolorum neque quidem numquam architecto totam velit dolores, accusamus, blanditiis hic sed facere
-            perferendis dolore modi iste quibusdam? Doloremque dolorum debitis laudantium non veritatis et quas
-            voluptates, sunt cumque enim distinctio quam! Minus, animi quo.</p>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="preview">
-        
-      </div>
-      <div class="description-container">
-        <div class="get-code">
-          <button>☆★★★★</button>
-      </div>
-        <div class="description">
-          <h4>Example Text</h4>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non quae eligendi dignissimos laborum laboriosam
-            fuga dolorum neque quidem numquam architecto totam velit dolores, accusamus, blanditiis hic sed facere
-            perferendis dolore modi iste quibusdam? Doloremque dolorum debitis laudantium non veritatis et quas
-            voluptates, sunt cumque enim distinctio quam! Minus, animi quo.</p>
-        </div>
-      </div>
-    </div>
-  </main>
-  <script src="library.js"></script>
-  <script src="../../utils/transition.js?vs=1.0" defer></script>
-</body>
+      <a href="../../index.html" data-title="Portfolio">back to portfolio</a>
+    </nav>
 
+    <main class="content-container">
+      <div class="card" data-title="SLD">
+        <div class="preview">
+          <div class="custom-slider-v1">
+            <div class="slider-value">
+              <span></span>
+            </div>
+            <div class="field">
+              <div class="value left">0</div>
+              <input type="range" min="0" max="200" value="100" steps="1" />
+              <div class="value right">200</div>
+            </div>
+          </div>
+        </div>
+        <div class="description-container">
+          <div class="get-code">
+            <button>Get Code</button>
+          </div>
+          <div class="description">
+            <h4>Example Text</h4>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non quae
+              eligendi dignissimos laborum laboriosam fuga dolorum neque quidem
+              numquam architecto totam velit dolores, accusamus, blanditiis hic
+              sed facere perferendis dolore modi iste quibusdam? Doloremque
+              dolorum debitis laudantium non veritatis et quas voluptates, sunt
+              cumque enim distinctio quam! Minus, animi quo.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card" data-title="BTN">
+        <div class="preview"></div>
+        <div class="description-container">
+          <div class="get-code">
+            <button>☆★★★★</button>
+          </div>
+          <div class="description">
+            <h4>Example Text</h4>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non quae
+              eligendi dignissimos laborum laboriosam fuga dolorum neque quidem
+              numquam architecto totam velit dolores, accusamus, blanditiis hic
+              sed facere perferendis dolore modi iste quibusdam? Doloremque
+              dolorum debitis laudantium non veritatis et quas voluptates, sunt
+              cumque enim distinctio quam! Minus, animi quo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="library.js"></script>
+    <script src="../../utils/transition.js?vs=1.0" defer></script>
+  </body>
 </html>

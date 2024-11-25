@@ -27,6 +27,157 @@ body {
 
 }
 
+/* navbar */
+nav{
+    width: 100%;
+    background: var(--card-des-bg-color);
+    height: 70px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .15);
+    position: fixed;
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-container{
+    position: relative;
+    min-width: 200px;
+    max-width: 300px;
+    width: 100%;
+    border-radius: 15px;
+    justify-content: center;
+    user-select: none;
+}
+
+.select-btn{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 8px;
+    background: var(--card-pre-bg-color);
+    color: var(--card-des-bg-color);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .15);
+    cursor: pointer;
+    z-index: 100;
+}
+
+.select-btn .select-btn-txt{
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+
+.select-btn span:first-child{
+    display: flex;
+    font-weight: 600;
+    height: 21px;
+    width: 21px;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+}
+
+.select-list-items{
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: var(--card-pre-bg-color);
+    color: var(--card-des-bg-color);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .15);
+    border-radius: 8px;
+    padding: 8px;
+    opacity: 0;
+    transition: .3s;
+    transition-delay: .1s;
+    display: none;
+}
+.select-btn.open ~ .select-list-items{
+    opacity: 1;
+    display: block;
+}
+
+.select-btn.open    span:first-child{
+    transform: rotate(90deg);
+}
+
+.select-list-items .select-item{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    height: 40px;
+    cursor: pointer;
+    padding: 0 15px;
+    border-radius: 4px;
+    transition: .3s ease;
+}
+
+.select-list-items .select-item:hover{
+    background: var(--card-des-bg-color);
+    color: var(--card-pre-bg-color);
+}
+
+.select-list-items .select-item:hover div{
+    border: 1.5px solid var(--card-pre-bg-color);
+}
+
+.select-list-items .select-item div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15px;
+    width: 15px;
+    border-radius: 4px;
+    margin-right: 10px;
+    border: 1.5px solid var(--card-des-bg-color);    
+}
+
+
+
+.select-list-items .select-item div span:first-child{
+    font-size: 12px;
+    transform: scale(0);
+}
+
+.select-item.checked div span:first-child{
+    transform: scale(1);
+}
+
+.select-item.checked div{
+    border: 1.5px solid var(--card-des-bg-color);
+    background: var(--card-des-bg-color);
+    color: var(--card-pre-bg-color);
+}
+
+
+nav a{
+    position: absolute;
+    right: 10px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .15);
+    text-decoration: none;
+}
+
+
+@media screen and (max-width:630px){
+    nav{
+        padding: 60px;
+        align-items: baseline;
+    }
+
+    nav a{
+        top:10px;
+    }
+}
 /* card template */
 .content-container {
     display: flex;
@@ -37,6 +188,8 @@ body {
     row-gap: 20px;
     column-gap: 20px;
     justify-content: center;
+    padding-top: 80px;
+    
 }
 
 .card {
@@ -47,6 +200,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     border-radius: 10px;
+    display: none;
 }
 
 .card .preview {
@@ -59,6 +213,7 @@ body {
     text-align: center;
     justify-content: center;
     align-items: center;
+    user-select: none;
 }
 
 .card .description-container {
