@@ -1,0 +1,40 @@
+/* This CSS file includes small hover animations, too minimal to require a separate style sheet. */
+
+/* btnV2 */
+.btn-v2 {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
+}
+
+.btn-v2:hover {
+    animation: btn-v2 .3s forwards ease;
+}
+
+@keyframes btn-v2 {
+    0% {
+        transform: translateX(0);
+    }
+
+    15% {
+        transform: translateX(20px);
+    }
+
+    35% {
+        transform: translateX(-20px);
+    }
+
+    55% {
+        transform: translateX(20px);
+    }
+
+    80% {
+        transform: translateX(-20px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

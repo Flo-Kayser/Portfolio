@@ -90,7 +90,7 @@ function filterCards() {
     const cardTitle = card.getAttribute("data-title");
 
     // Split the cardTitle by commas if it contains multiple values
-    const cardTitlesArray = cardTitle.split(",").map(title=>title.trim());
+    const cardTitlesArray = cardTitle.split(",").map((title) => title.trim());
 
     // Check if any selected title matches a value in cardTitlesArray
     const shouldDisplay = selectedTitles.some(
@@ -98,7 +98,7 @@ function filterCards() {
     );
 
     // Display or hide the card based on the condition
-    card.style.display = shouldDisplay ? "block" : "none";
+    card.style.display = shouldDisplay ? "flex" : "none";
   });
 }
 
@@ -137,3 +137,73 @@ const btnV1_menu = document.querySelector(".btn-v1");
 btnV1_menuToggle.addEventListener("click", () => {
   btnV1_menu.classList.toggle("active");
 });
+// card 2 END - btn 01
+// card 3 - gif 01
+
+let intervalId; // To store the interval ID
+let isRainPaused = false; // Track if animations are paused
+
+function rain() {
+  let cloud = document.querySelector(".gif-v1 .cloud");
+  let e = document.createElement("div");
+  let left = Math.floor(Math.random() * 150);
+  let width = Math.random() * 2.5;
+  let height = Math.random() * 25;
+  let duration = Math.random() * 0.25;
+
+  e.classList.add("drop");
+  cloud.appendChild(e);
+  e.style.left = left + "px";
+  e.style.width = 0.5 + width + "px";
+  e.style.height = 0.5 + height + "px";
+  e.style.animationDuration = 1 + duration + "s";
+
+  setTimeout(() => {
+    cloud.removeChild(e);
+  }, 2000);
+}
+
+function startRain() {
+  intervalId = setInterval(() => {
+    rain();
+  }, 20);
+}
+
+function stopRain() {
+  clearInterval(intervalId);
+}
+
+
+document.getElementById("toggle-rain").addEventListener("click", () => {
+  const cloud = document.querySelector(".gif-v1 .cloud");
+  const drops = document.querySelectorAll(".gif-v1 .cloud .drop");
+
+  if (isRainPaused) {
+    // Resume animation and rain function
+    cloud.classList.remove("paused");
+    drops.forEach(drop => drop.classList.remove("paused"));
+    startRain();
+    document.getElementById("toggle-rain").innerText = "Pause Animation";
+  } else {
+    // Pause animation and rain function
+    cloud.classList.add("paused");
+    drops.forEach(drop => drop.classList.add("paused"));
+    stopRain();
+    document.getElementById("toggle-rain").innerText = "Resume Animation";
+  }
+
+  isRainPaused = !isRainPaused;
+});
+
+
+startRain();
+
+// card 3 END gif 01
+// card 4 gif 02
+
+document.getElementById("toggle-circular-border").addEventListener("click", ()=>{
+  const borders= document.querySelectorAll(".gif-v2 span");
+  borders.forEach(span =>{
+    span.classList.toggle("paused")
+  })
+})

@@ -87,11 +87,11 @@
     position: absolute;
     width: 60px;
     height: 60px;
-    color: var(--card-des-bg-color);
+    color: var(--color);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 101;
+    z-index: 2;
     border-radius: 50%;
     cursor: pointer;
     font-size: 32px;
