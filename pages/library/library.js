@@ -203,7 +203,44 @@ startRain();
 
 document.getElementById("toggle-circular-border").addEventListener("click", ()=>{
   const borders= document.querySelectorAll(".gif-v2 span");
+  const button = document.getElementById("toggle-circular-border");
+
   borders.forEach(span =>{
     span.classList.toggle("paused")
   })
+if(button.innerText==="Pause Animation"){
+  button.innerText = "Resume ANimation"
+}else{
+  button.innerText = "Pause Animation"
+}
+
 })
+
+// card 7 gif 04 - potter
+document.getElementById("toggle-potter").addEventListener("click", ()=>{
+  const bg= document.querySelector(".gif-v4");
+  const button = document.getElementById("toggle-potter");
+
+  
+    bg.classList.toggle("paused")
+  
+if(button.innerText==="Pause Animation"){
+  button.innerText = "Resume ANimation"
+}else{
+  button.innerText = "Pause Animation"
+}
+})
+
+// card 8 gif 05 - eyes
+document.querySelector("body").addEventListener("mousemove", (event) => {
+  const eyes = document.querySelectorAll(".eye");
+  eyes.forEach((eye) => {
+    let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
+    let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
+
+    let radian = Math.atan2(event.pageX - x, event.pageY - y);
+    let rotation = (radian * (180 / Math.PI) * -1) + 270;
+
+    eye.style.transform = "rotate(" + rotation + "deg)";
+  });
+});

@@ -1,6 +1,6 @@
 /* This CSS file includes small hover animations, too minimal to require a separate style sheet. */
 
-/* btnV2 */
+/* btnV2 - swiggle*/
 .btn-v2 {
     padding: 10px;
     border: none;
@@ -37,4 +37,154 @@
     100% {
         transform: translateX(0);
     }
+}
+
+/* gifV3 - crack*/
+
+.gif-v3 {
+    position: relative;
+    
+    font-size: 60px;
+    font-weight: 700;
+    color: var(--color);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-shadow: 0 0 0.15em var(--color);
+    user-select: none;
+    white-space: nowrap;
+    filter: blur(0.007em);
+    animation: shake 10s linear infinite;
+}
+
+.gif-v3 span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    -webkit-clip-path: polygon(10% 0%, 44% 0%, 70% 100%, 55% 100%);
+            clip-path: polygon(10% 0%, 44% 0%, 70% 100%, 55% 100%);
+}
+
+.gif-v3::before,
+.gif-v3::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.gif-v3::before {
+    animation: crack1 10s linear infinite;
+    -webkit-clip-path: polygon(0% 0%, 10% 0%, 55% 100%, 0% 100%);
+            clip-path: polygon(0% 0%, 10% 0%, 55% 100%, 0% 100%);
+}
+
+.gif-v3::after {
+    animation: crack2 10s linear infinite;
+    -webkit-clip-path: polygon(44% 0%, 100% 0%, 100% 100%, 70% 100%);
+            clip-path: polygon(44% 0%, 100% 0%, 100% 100%, 70% 100%);
+}
+
+@keyframes shake {
+    2.5%, 7.5%, 12.5%, 17.5%, 27.5%, 32.5%, 37.5%, 47.5% {
+        filter: blur(0.018em);
+        transform: translateY(0.018em) rotate(0deg);
+    }
+
+    5%, 15%, 20%, 25%, 35%, 40%, 45% {
+        filter: blur(0.01em);
+        transform: translateY(-0.018em) rotate(0deg);
+    }
+
+    10%, 30% {
+        filter: blur(0.03em);
+        transform: translate(-0.018em, 0.018em) rotate(0deg);
+    }
+
+    22.5%, 42.5% {
+        filter: blur(0.03em);
+        transform: translate(0.018em, -0.018em) rotate(0deg);
+    }
+
+    50%,100% {
+        filter: blur(0.007em);
+        transform: translate(0) rotate(-0.5deg);
+    }
+}
+
+@keyframes crack1 {
+    0%, 48% {
+        transform: translate(-50%, -50%);
+    }
+
+    50%, 100% {
+        transform: translate(-52%, -47%);
+    }
+}
+
+@keyframes crack2 {
+    0%, 48% {
+        transform: translate(-50%, -50%);
+    }
+
+    50%,100% {
+        transform: translate(-49%, -53%);
+    }
+}
+
+/*  gif v4 - potter*/
+.gif-v4{
+    font-size: 110px;
+    padding-bottom:60px ;
+    /* font-weight: 600; */
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-image:url("/img/assets/asset_Hogwarts.jpg");
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 400px;
+    animation: potter-bg 3s ease-in-out infinite;
+}
+
+@keyframes potter-bg{
+    0%,100%{background-position: center 30%;}
+    50%{background-position: center 70%;}
+}
+#toggle-potter{
+    transform: translateY(-160px)
+}
+
+.paused {
+    animation-play-state: paused !important;
+  }
+
+/* gif v5 - eyes*/
+.gif-v5{
+    display: flex;
+    
+}
+
+.gif-v5 .eye{
+    position: relative;
+    width: 130px;
+    height: 130px;
+    display: block;
+    background: #fff;
+    margin: 0 10px;
+    border-radius: 50%;
+    box-shadow: 0 5px 45px rgba(0, 0, 0, .7),
+    inset 0 0 10px blue, inset 0 0 20px blue;
+}
+
+.gif-v5 .eye::before{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(17, 17, 17, .9);
+    border-radius: 50%;
+    top: 50%;
+    left: 30px;
+    transform: translate(-50%,-50%);
+    border: 6px rgb(255, 255, 255,.7) solid;
+    box-sizing: border-box;
 }
