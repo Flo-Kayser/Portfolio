@@ -88,7 +88,13 @@ a {
     transition: all .3s;
 }
 
-.field.is-occupied {
+.field:hover::before{
+    content: attr(data-hover);
+    color: #fff;
+}
+
+.field.is-occupied, .field.is-occupied:hover::before {
+    content: "";
     background: var(--darker-bluish-grey);
     cursor: default;
 }

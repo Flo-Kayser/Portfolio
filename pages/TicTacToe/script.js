@@ -1,9 +1,13 @@
-let count = 0;
+let count;
 let fieldScores = Array(9).fill("");
 let xCount = parseInt(localStorage.getItem("xCount")) || 0;
 let oCount = parseInt(localStorage.getItem("oCount")) || 0;
 
-updateScoresDisplay();
+
+window.onload = (e) =>{
+  restart()
+  console.log("load")
+}
 
 document.querySelectorAll(".field").forEach((field) => {
   field.addEventListener("click", () => {
@@ -16,6 +20,8 @@ document.querySelectorAll(".field").forEach((field) => {
     field.textContent = currentPlayer;
     fieldScores[fieldPos] = currentPlayer;
     count++;
+    updateHoverSymbol(currentPlayer);
+    currentTurn(count);
 
     if (checkWin(fieldScores)) {
       document.querySelectorAll(".field").forEach((field) => {
@@ -31,15 +37,35 @@ document.querySelectorAll(".field").forEach((field) => {
   });
 });
 
+function updateHoverSymbol(currentPlayer) {
+  nextPlayer = currentPlayer === "X" ? "O" : "X";
+  document.querySelectorAll(".field").forEach((field) => {
+    if (!field.textContent.trim()) {
+      field.setAttribute("data-hover", nextPlayer);
+    }
+  });
+}
 function restart() {
   document.querySelectorAll(".field").forEach((field) => {
     field.textContent = "";
     field.classList.remove("is-occupied");
   });
   fieldScores.fill("");
-  count = 0;
+  count = Math.floor(Math.random() * 2);
+  currentTurn(count);
+  updateScoresDisplay();
+  const currentPlayer = count % 2 === 1 ? "X" : "O";
+  updateHoverSymbol(currentPlayer);
 }
 
+function currentTurn(count) {
+  const winMes = document.querySelector(".win-mes");
+  if (count % 2 === 0) {
+    winMes.textContent = "X's turn";
+  } else {
+    winMes.textContent = "O's turn";
+  }
+}
 function checkWin(scores) {
   const winPatterns = [
     [0, 1, 2],
