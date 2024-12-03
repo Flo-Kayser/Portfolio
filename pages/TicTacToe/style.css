@@ -1,0 +1,192 @@
+/* style.css  - tictactoe*/
+@import url('../../utils/transitions.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+
+    --dark-olive-green: #2F3020;
+    --moss-green: #596235;
+    --brick-red: #D96846;
+    --bluish-grey: #CDCBD6;
+    --darker-bluish-grey: #66666b;
+    --white: #faebd7;
+
+}
+
+body {
+    height: 100vh;
+    background-color: var(--dark-olive-green);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #fff;
+
+}
+
+a {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: var(--white);
+    color: var(--dark-olive-green);
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .15);
+    text-decoration: none;
+    transform: .3s;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    width: 600px;
+    height: 800px;
+    background: var(--darker-bluish-grey);
+    padding-top: 50px;
+    border-radius: 20px;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, .5);
+    position: relative;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 500px;
+    height: 500px;
+    background: var(--moss-green);
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .5);
+
+}
+
+.field {
+    width: 150px;
+    height: 150px;
+    background: var(--white);
+    border-radius: 20px;
+    -webkit-box-shadow: inset 0px 0px 20px 5px rgba(0, 0, 0, 0.5), 0px 6px 9px 6px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0px 0px 20px 5px rgba(0, 0, 0, 0.5), 0px 6px 9px 6px rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    font-size: 80px;
+    font-weight: 700;
+    color: var(--brick-red);
+    text-shadow: 0 0 10px #222121, 5px 5px 6px rgba(0, 0, 0, .5);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all .3s;
+}
+
+.field.is-occupied {
+    background: var(--darker-bluish-grey);
+    cursor: default;
+}
+
+#restart {
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+
+    position: absolute;
+    left: 65px;
+    bottom: 170px;
+    cursor: pointer;
+    box-shadow: 0px 6px 9px 6px rgba(0, 0, 0, 0.5);
+    background: var(--white);
+    transition: all .3s;
+}
+
+#restart:hover,
+.field:hover,
+#reset:hover,
+a:hover {
+    background: var(--bluish-grey);
+}
+
+.field.is-occupied:hover {
+    background: var(--darker-bluish-grey);
+}
+
+.scores {
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: 600;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    right: 65px;
+    bottom: 170px;
+    box-shadow: 0px 6px 9px 6px rgba(0, 0, 0, 0.5);
+    background: var(--white);
+
+}
+
+#x-score,
+#o-score {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 90px;
+    height: 40px;
+    color: var(--dark-olive-green);
+    margin: 10px;
+
+}
+
+.win-mes {
+    width: 200px;
+    height: 50px;
+    margin-top: 110px;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--bluish-grey);
+    display: flex;
+    position: absolute;
+    bottom: 100px;
+    left: 65px;
+    justify-content: center;
+    align-items: center;
+}
+
+#reset {
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+
+    position: absolute;
+    right: 65px;
+    bottom: 100px;
+    cursor: pointer;
+    box-shadow: 0px 6px 9px 6px rgba(0, 0, 0, 0.5);
+    background: var(--white);
+    transition: all .3s;
+}

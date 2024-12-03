@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="transition transition-2 is-active">
+      <span class="transition-text"></span>
+    </div> 
+    <a href="../../index.html" data-title="Portfolio">back to portfolio</a>
+
+    <div class="wrapper">
+      <div class="board">
+        <div class="field" data-title="0"></div>
+        <div class="field" data-title="1"></div>
+        <div class="field" data-title="2"></div>
+        <div class="field" data-title="3"></div>
+        <div class="field" data-title="4"></div>
+        <div class="field" data-title="5"></div>
+        <div class="field" data-title="6"></div>
+        <div class="field" data-title="7"></div>
+        <div class="field" data-title="8"></div>
+      </div>
+
+      <button id="restart" onclick="restart()">Start New Game</button>
+      <div class="scores">
+        <span id="x-score">X: </span>
+        <span id="o-score">O: </span>
+      </div>
+
+      <div class="win-mes"></div>
+      <button id="reset" onclick="resetScores()">Reset Scores</button>
+    </div>
+    <script src="script.js"></script>
+    <script src="../../utils/transition.js?vs=1.0" defer></script>
+
+  </body>
+</html>
