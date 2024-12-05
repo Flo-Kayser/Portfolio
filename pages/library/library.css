@@ -358,7 +358,7 @@ nav a {
     border: none;
     padding: 5px;
     font-size: 12px;
-    z-index: 100;
+    z-index: 1;
 }
 
 @media screen and (max-width:645px) {

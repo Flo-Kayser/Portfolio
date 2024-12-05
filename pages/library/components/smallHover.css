@@ -187,3 +187,93 @@
     border: 6px rgb(255, 255, 255,.7) solid;
     box-sizing: border-box;
 }
+
+/* tool 01 - rgb vs hex */
+
+.tool-v1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 85%;
+    transform: translateY(-30px);
+}
+
+.tool-v1 button{
+    width: 60%;
+    height: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
+    color: var(--color);
+    background: var(--card-des-bg-color);
+    transition: .3s;
+}
+
+.tool-v1 button:hover{
+    background: var(--color);
+    color: var(--card-des-bg-color);
+}
+
+.tool-v1 input{
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: black;
+    font-weight: 500;
+    border: 2px solid transparent;
+    width: 80%;
+    
+}
+
+.tool-v1 input:focus{
+    border: 2px solid black;
+}
+
+.tool-v1 .return-color{
+    box-sizing: border-box;
+    width: 80%;
+    height: 40px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: black;
+    font-weight: 500;
+    border: 2px solid transparent;
+    background: var(--color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .3s;
+    position: relative;
+}
+.tool-v1 .return-color:hover{
+    background-color: rgba(255, 255, 255, .8);
+}
+.tool-v1 .return-color::before{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "content_copy";
+    font-family: 'Material Icons';
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+    right: 0;
+    color: rgba(0, 0, 0, .7);
+
+}

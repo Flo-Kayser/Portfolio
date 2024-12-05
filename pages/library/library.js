@@ -173,7 +173,6 @@ function stopRain() {
   clearInterval(intervalId);
 }
 
-
 document.getElementById("toggle-rain").addEventListener("click", () => {
   const cloud = document.querySelector(".gif-v1 .cloud");
   const drops = document.querySelectorAll(".gif-v1 .cloud .drop");
@@ -181,13 +180,13 @@ document.getElementById("toggle-rain").addEventListener("click", () => {
   if (isRainPaused) {
     // Resume animation and rain function
     cloud.classList.remove("paused");
-    drops.forEach(drop => drop.classList.remove("paused"));
+    drops.forEach((drop) => drop.classList.remove("paused"));
     startRain();
     document.getElementById("toggle-rain").innerText = "Pause Animation";
   } else {
     // Pause animation and rain function
     cloud.classList.add("paused");
-    drops.forEach(drop => drop.classList.add("paused"));
+    drops.forEach((drop) => drop.classList.add("paused"));
     stopRain();
     document.getElementById("toggle-rain").innerText = "Resume Animation";
   }
@@ -195,52 +194,140 @@ document.getElementById("toggle-rain").addEventListener("click", () => {
   isRainPaused = !isRainPaused;
 });
 
-
 startRain();
 
 // card 3 END gif 01
 // card 4 gif 02
 
-document.getElementById("toggle-circular-border").addEventListener("click", ()=>{
-  const borders= document.querySelectorAll(".gif-v2 span");
-  const button = document.getElementById("toggle-circular-border");
+document
+  .getElementById("toggle-circular-border")
+  .addEventListener("click", () => {
+    const borders = document.querySelectorAll(".gif-v2 span");
+    const button = document.getElementById("toggle-circular-border");
 
-  borders.forEach(span =>{
-    span.classList.toggle("paused")
-  })
-if(button.innerText==="Pause Animation"){
-  button.innerText = "Resume ANimation"
-}else{
-  button.innerText = "Pause Animation"
-}
-
-})
+    borders.forEach((span) => {
+      span.classList.toggle("paused");
+    });
+    if (button.innerText === "Pause Animation") {
+      button.innerText = "Resume ANimation";
+    } else {
+      button.innerText = "Pause Animation";
+    }
+  });
 
 // card 7 gif 04 - potter
-document.getElementById("toggle-potter").addEventListener("click", ()=>{
-  const bg= document.querySelector(".gif-v4");
+document.getElementById("toggle-potter").addEventListener("click", () => {
+  const bg = document.querySelector(".gif-v4");
   const button = document.getElementById("toggle-potter");
 
-  
-    bg.classList.toggle("paused")
-  
-if(button.innerText==="Pause Animation"){
-  button.innerText = "Resume ANimation"
-}else{
-  button.innerText = "Pause Animation"
-}
-})
+  bg.classList.toggle("paused");
+
+  if (button.innerText === "Pause Animation") {
+    button.innerText = "Resume ANimation";
+  } else {
+    button.innerText = "Pause Animation";
+  }
+});
 
 // card 8 gif 05 - eyes
 document.querySelector("body").addEventListener("mousemove", (event) => {
   const eyes = document.querySelectorAll(".eye");
   eyes.forEach((eye) => {
-    let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
-    let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
+    let x = eye.getBoundingClientRect().left + eye.clientWidth / 2;
+    let y = eye.getBoundingClientRect().top + eye.clientHeight / 2;
 
     let radian = Math.atan2(event.pageX - x, event.pageY - y);
-    let rotation = (radian * (180 / Math.PI) * -1) + 270;
+    let rotation = radian * (180 / Math.PI) * -1 + 270;
 
     eye.style.transform = "rotate(" + rotation + "deg)";
   });
 });
+// card 9 tool 01 - rgb - hex
+
+const changeModeBtn = document.getElementById("change-mode");
+const calculateBtn = document.getElementById("calculate-color");
+const colorInput = document.getElementById("color-input");
+const returnColor = document.querySelector(".return-color");
+let mode = "hex";
+
+changeModeBtn.addEventListener("click", () => {
+  mode = mode === "hex" ? "rgb" : "hex";
+  console.log(mode);
+  if (mode === "hex") {
+    colorInput.placeholder = "HEX: eg: #FF0000";
+  } else {
+    colorInput.placeholder = "RGB: eg: 255, 0, 0";
+  }
+});
+
+colorInput.addEventListener("keydown",(e)=>{
+  if(e.key==="Enter"){
+    mode === "hex" ? hexToRgb() : rgbToHex();
+  }
+})
+
+calculateBtn.addEventListener("click", () => {
+  mode === "hex" ? hexToRgb() : rgbToHex();
+});
+
+function hexToRgb() {
+  let hex = colorInput.value;
+
+  hex = hex.replace("#", "");
+  if (hex.length === 3) {
+    hex = hex
+      .split("")
+      .map((x) => x + x)
+      .join("");
+  }
+
+  if (hex.length !== 6 || !/^[0-9a-fA-F]{6}$/.test(hex)) {
+    returnColor.textContent = "invalid input";
+    return;
+  }
+  
+  const r = parseInt(hex.substring(0,2),16)
+  const g = parseInt(hex.substring(2,4),16)
+  const b = parseInt(hex.substring(4,6),16)
+  
+  returnColor.textContent = `rgb(${r},${g},${b})`;
+  return
+  
+}
+
+function rgbToHex() {
+  let rgb = colorInput.value;
+
+  rgb= rgb.split("rgb")[1]||rgb
+  rgb = rgb.split("(")[1]||rgb
+  rgb = rgb.split(")")[0]||rgb
+  console.log(rgb)
+
+    
+  const rgbArray = rgb.match(/^(\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})$/);
+  
+  if (!rgbArray) {
+      returnColor.textContent = "invalid input";
+      return;
+  }
+
+  const r = parseInt(rgbArray[1]); 
+  const g = parseInt(rgbArray[2]); 
+  const b = parseInt(rgbArray[3]); 
+
+  if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
+      returnColor.textContent = "invalid input";
+      return;
+  }
+
+  const toHex = (value) => {
+      let hex_temp = value.toString(16); 
+      return hex_temp.length === 1 ? '0' + hex_temp : hex_temp; 
+  }
+  returnColor.textContent = `#${toHex(r)}${toHex(g)}${toHex(b)}`
+  return
+}
+
+returnColor.addEventListener("click", ()=>{
+  navigator.clipboard.writeText(returnColor.textContent)
+})
