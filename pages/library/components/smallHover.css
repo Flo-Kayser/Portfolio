@@ -277,3 +277,31 @@
     color: rgba(0, 0, 0, .7);
 
 }
+
+#clear-input{
+    position: absolute;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 5px;
+    display: flex;
+    background: transparent;
+    box-shadow: none;
+    color: var(--card-pre-bg-color);
+    top: 56px;
+    right: 30px;
+    transition: .3s;
+
+
+}
+
+#clear-input span{
+    font-size: 20px;
+}
+
+#clear-input:hover{
+    color: var(--color);
+    background-color: var(--card-pre-bg-color);
+}

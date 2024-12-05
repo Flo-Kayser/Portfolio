@@ -246,13 +246,17 @@ document.querySelector("body").addEventListener("mousemove", (event) => {
 
 const changeModeBtn = document.getElementById("change-mode");
 const calculateBtn = document.getElementById("calculate-color");
+const clearInputBtn = document.getElementById("clear-input");
 const colorInput = document.getElementById("color-input");
 const returnColor = document.querySelector(".return-color");
 let mode = "hex";
 
+clearInputBtn.addEventListener("click", () => {
+  colorInput.value = "";
+});
+
 changeModeBtn.addEventListener("click", () => {
   mode = mode === "hex" ? "rgb" : "hex";
-  console.log(mode);
   if (mode === "hex") {
     colorInput.placeholder = "HEX: eg: #FF0000";
   } else {
@@ -260,11 +264,11 @@ changeModeBtn.addEventListener("click", () => {
   }
 });
 
-colorInput.addEventListener("keydown",(e)=>{
-  if(e.key==="Enter"){
+colorInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
     mode === "hex" ? hexToRgb() : rgbToHex();
   }
-})
+});
 
 calculateBtn.addEventListener("click", () => {
   mode === "hex" ? hexToRgb() : rgbToHex();
@@ -285,49 +289,47 @@ function hexToRgb() {
     returnColor.textContent = "invalid input";
     return;
   }
-  
-  const r = parseInt(hex.substring(0,2),16)
-  const g = parseInt(hex.substring(2,4),16)
-  const b = parseInt(hex.substring(4,6),16)
-  
+
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+
   returnColor.textContent = `rgb(${r},${g},${b})`;
-  return
-  
+  return;
 }
 
 function rgbToHex() {
   let rgb = colorInput.value;
 
-  rgb= rgb.split("rgb")[1]||rgb
-  rgb = rgb.split("(")[1]||rgb
-  rgb = rgb.split(")")[0]||rgb
-  console.log(rgb)
+  rgb = rgb.split("rgb")[1] || rgb;
+  rgb = rgb.split("(")[1] || rgb;
+  rgb = rgb.split(")")[0] || rgb;
 
-    
   const rgbArray = rgb.match(/^(\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})$/);
-  
+
   if (!rgbArray) {
-      returnColor.textContent = "invalid input";
-      return;
+    returnColor.textContent = "invalid input";
+    return;
   }
 
-  const r = parseInt(rgbArray[1]); 
-  const g = parseInt(rgbArray[2]); 
-  const b = parseInt(rgbArray[3]); 
+  const r = parseInt(rgbArray[1]);
+  const g = parseInt(rgbArray[2]);
+  const b = parseInt(rgbArray[3]);
 
   if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
-      returnColor.textContent = "invalid input";
-      return;
+    returnColor.textContent = "invalid input";
+    return;
   }
 
   const toHex = (value) => {
-      let hex_temp = value.toString(16); 
-      return hex_temp.length === 1 ? '0' + hex_temp : hex_temp; 
-  }
-  returnColor.textContent = `#${toHex(r)}${toHex(g)}${toHex(b)}`
-  return
+    let hex_temp = value.toString(16);
+    return hex_temp.length === 1 ? "0" + hex_temp : hex_temp;
+  };
+  returnColor.textContent = `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+  return;
 }
 
-returnColor.addEventListener("click", ()=>{
-  navigator.clipboard.writeText(returnColor.textContent)
-})
+returnColor.addEventListener("click", () => {
+  if(returnColor.textContent !=="" && returnColor.textContent !== "invalid input")
+  navigator.clipboard.writeText(returnColor.textContent);
+});
